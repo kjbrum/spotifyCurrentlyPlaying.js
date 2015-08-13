@@ -11,6 +11,7 @@ http://kylebrumm.com/spotify-currently-playing
 
 - Create a simple site for the documentation/instructions
 - Make more performant (Better way to do the ajax calls?)
+- Turn into a Bower package
 
 ## License
 
