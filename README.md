@@ -2,9 +2,15 @@
 
 > Small jQuery plugin for retrieving your currently playing song from Spotify
 
-# Documentation
+
+## Documentation
 
 http://kylebrumm.com/spotify-currently-playing
+
+## To-Do
+
+- Create a simple site for the documentation/instructions
+- Make more performant (Better way to do the ajax calls?)
 
 ## License
 
