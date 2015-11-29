@@ -5,7 +5,7 @@
 
 ## Documentation
 
-http://kylebrumm.com/spotify-currently-playing
+http://kylebrumm.com/adding-a-spotify-currently-playing-widget-to-your-website/
 
 ## To-Do
 
