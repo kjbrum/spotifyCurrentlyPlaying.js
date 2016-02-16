@@ -12,10 +12,11 @@
                 throw 'Missing selector';
             }
 
+            var recentTrack = this.queryLastFM();
+            var track = this.searchSpotify(recentTrack.title, recentTrack.artist, recentTrack.album);
+
             // TODO
-            // 1. Query Last.FM
-            // 2. Search Spotify for the track
-            // 3. Display the Spotify player using the selector
+            // Display the Spotify player using the selector and the track information
         },
 
         /*
