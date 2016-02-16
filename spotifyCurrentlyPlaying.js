@@ -1,4 +1,4 @@
-;(function(global, $) {
+;(function(global) {
     var Spotify = function(selector, username, api_key, width, height) {
         return new Spotify.init(selector, username, api_key, width, height);
     }
@@ -90,4 +90,4 @@
     Spotify.init.prototype = Spotify.prototype;
 
     global.Spotify = Spotify;
-}(window, jQuery));
+}(window));
