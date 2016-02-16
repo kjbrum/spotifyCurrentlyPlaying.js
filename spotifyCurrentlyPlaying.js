@@ -52,6 +52,18 @@
             };
         },
 
+        /*
+         * Search for track information on Spotify
+         */
+        searchSpotify: function(title, artist, album) {
+            console.log('Searching Spotify...');
+
+            // TODO
+            // 1. Make an API call to look for the supplied track information
+            // 2. Return the track URI if one was found, else throw an error
+
+            return 'uri';
+        }
     };
 
     Spotify.init = function(selector, username, api_key, width, height) {
