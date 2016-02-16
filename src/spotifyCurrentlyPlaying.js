@@ -60,7 +60,7 @@
             var self = this;
 
             // Set the request URL for Last.fm
-            var lastfm_request_url = 'http://ws.audio.com/2.0/?method=user.getrecenttracks&user='+this.username+'&api_key='+this.api_key+'&limit=1&format=json';
+            var lastfm_request_url = 'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user='+this.username+'&api_key='+this.api_key+'&limit=1&format=json';
 
             // Make a request to the Last.fm API
             var request = new XMLHttpRequest();
