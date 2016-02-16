@@ -1,3 +1,15 @@
+/*!
+ *  --------------------------------
+ *  Spotify Currently Playing v1.0.0
+ *  --------------------------------
+ *
+ *  https://github.com/kjbrum/spotify-currently-playing
+ *  Kyle Brumm (http://kylebrumm.com)
+ *
+ *  Display the song that is currently playing on your Spotify.
+ *
+ */
+
 ;(function(global) {
     var Spotify = function(selector, username, api_key, width, height) {
         return new Spotify.init(selector, username, api_key, width, height);
