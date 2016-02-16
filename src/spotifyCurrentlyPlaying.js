@@ -47,7 +47,7 @@
                         iframe.setAttribute('allowtransparency', 'true');
                         container.appendChild(iframe);
                     } else {
-                        console.log('No track found');
+                        console.log('No tracks were found on Spotify.');
                     }
                 });
             });
