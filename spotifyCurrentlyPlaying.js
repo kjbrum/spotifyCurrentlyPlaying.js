@@ -20,6 +20,7 @@
          * Display the Spotify player
          */
         displayPlayer: function() {
+            // Check for missing selector
             if(!this.selector) {
                 throw 'Missing selector';
             }
@@ -57,12 +58,12 @@
         validateLastFM: function() {
             // Check for missing username
             if(!this.username) {
-                throw 'Missing username';
+                throw 'missing username';
             }
 
             // Check for missing api key
             if(!this.api_key) {
-                throw 'Missing api_key';
+                throw 'missing api_key';
             }
 
             console.log('Validating Last.FM...');
@@ -111,14 +112,14 @@
                     callback();
                 } else {
                     // Error from the server
-                    throw 'Some kind of error from the server';
+                    throw 'error from the server';
                 }
             };
 
             // Handle any errors
             request.onerror = function() {
                 // Connection error
-                throw 'Some kind of connection error';
+                throw 'connection error';
             };
 
             // Send the request
@@ -165,14 +166,14 @@
                     callback();
                 } else {
                     // Error from the server
-                    throw 'Some kind of error from the server';
+                    throw 'error from the server';
                 }
             };
 
             // Handle any errors
             request.onerror = function() {
                 // Connection error
-                throw 'Some kind of connection error';
+                throw 'connection error';
             };
 
             // Send the request
