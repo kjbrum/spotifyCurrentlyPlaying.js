@@ -5,19 +5,14 @@
   "main": "index.js",
   "scripts": {
     "browsersync": "browser-sync start --files 'style.css, js/*.min.js, **/*.php' --proxy scp.dev --tunnel 'hmkyle'",
-    "build": "npm run js:build && npm run css:build",
+    "build": "npm run css:build",
     "css": "npm run css:watch",
     "css:autoprefix": "postcss --use autoprefixer --output style.css style.css",
     "css:build": "npm run css:compile && npm run css:autoprefix",
-    "css:compile": "sass --style compressed scss/style.scss > style.css",
+    "css:compile": "sass --style compressed scss/style.scss > css/style.css",
     "css:watch": "watch 'npm run css:build' scss",
     "dev": "npm run watch | npm run browsersync",
-    "js": "npm run js:watch",
-    "js:build": "npm run js:head && npm run js:main",
-    "js:head": "uglifyjs js/head/*.js -o js/head.min.js",
-    "js:main": "uglifyjs js/vendor/*.js js/src/*.js -o js/main.min.js",
-    "js:watch": "watch 'npm run js:build' js/head js/vendor js/src",
-    "watch": "npm run js | npm run css"
+    "watch": "npm run css"
   },
   "repository": {
     "type": "git",
@@ -33,7 +28,6 @@
     "autoprefixer": "latest",
     "node-sass": "latest",
     "postcss-cli": "latest",
-    "uglifyjs": "latest",
     "watch": "latest"
   }
 }
