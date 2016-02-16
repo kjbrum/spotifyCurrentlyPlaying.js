@@ -12,13 +12,11 @@
                 throw 'Missing selector';
             }
 
+            var self = this;
             // Get the most recent track
-            this.queryLastfm();
+            this.queryLastfm(this.searchSpotify);
 
-            console.log(this.lastfmTrack);
 
-            // Get the track URI from Spotify
-            // this.searchSpotify(lastfmTrack.title, lastfmTrack.artist, lastfmTrack.album);
 
             // TODO
             // Display the Spotify player using the selector and the track information
@@ -48,8 +46,9 @@
         /*
          * Get the most recently scrobbled track from Last.fm
          */
-        queryLastfm: function() {
+        queryLastfm: function(callback) {
             console.log('Querying Last.FM...');
+            var self = this;
 
             // Set the request URL for Last.fm
             var lastfm_request_url = 'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user='+this.username+'&api_key='+this.api_key+'&limit=1&format=json';
@@ -71,9 +70,13 @@
                         the_track = data.recenttracks.track;
                     }
 
-                    this.lastfmTrack.title = the_track.name;
-                    this.lastfmTrack.artist = the_track.artist['#text'];
-                    this.lastfmTrack.album = the_track.album['#text'];
+                    self.lastfmTrack = {
+                        title: the_track.name,
+                        artist: the_track.artist['#text'],
+                        album: the_track.album['#text']
+                    };
+
+                    callback(self.lastfmTrack);
                 } else {
                     // Error from the server
                     throw 'Some kind of error from the server';
@@ -93,8 +96,9 @@
         /*
          * Search for track information on Spotify
          */
-        searchSpotify: function(title, artist, album) {
+        searchSpotify: function(trackInfo) {
             console.log('Searching Spotify...');
+            console.log(trackInfo);
 
             // TODO
             // 1. Make an API call to look for the supplied track information
