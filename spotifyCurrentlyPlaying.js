@@ -34,6 +34,10 @@
             console.log('Validating Last.FM...');
             console.log('Username: ' + this.username);
             console.log('API Key: ' + this.api_key);
+
+            // TODO
+            // 1. Make an API call to see if the username and api_key work
+            // 2. Throw an error if something goes wrong
         },
 
         /*
