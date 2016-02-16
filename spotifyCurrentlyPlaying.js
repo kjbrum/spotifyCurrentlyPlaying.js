@@ -12,8 +12,9 @@
                 throw 'Missing selector';
             }
 
-            var recentTrack = this.queryLastFM();
-            var track = this.searchSpotify(recentTrack.title, recentTrack.artist, recentTrack.album);
+            this.queryLastfm();
+            console.log(this.recentTrack);
+            // var track = this.searchSpotify(recentTrack.title, recentTrack.artist, recentTrack.album);
 
             // TODO
             // Display the Spotify player using the selector and the track information
@@ -41,20 +42,48 @@
         },
 
         /*
-         * Get the most recently scrobbled track from LastFM
+         * Get the most recently scrobbled track from Last.fm
          */
-        queryLastFM: function() {
+        queryLastfm: function() {
             console.log('Querying Last.FM...');
 
-            // TODO
-            // 1. Make an API call to get the most recent track information
-            // 2. Return the results = {title, artist, album}
+            // Set the request URL for Last.fm
+            var lastfm_request_url = 'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user='+this.username+'&api_key='+this.api_key+'&limit=1&format=json';
 
-            return {
-                title: 'title',
-                artist: 'artist',
-                album: 'album'
+            // Make a request to the Last.fm API
+            var request = new XMLHttpRequest();
+            request.open('GET', lastfm_request_url, true);
+
+            // Check for a successful response
+            request.onload = function() {
+                if(request.status >= 200 && request.status < 400) {
+                    // Success!
+                    var data = JSON.parse(request.responseText);
+                    var the_track;
+
+                    if(data.recenttracks.track[0]) {
+                        the_track = data.recenttracks.track[0];
+                    } else {
+                        the_track = data.recenttracks.track;
+                    }
+
+                    this.recentTrack.title = the_track.name;
+                    this.recentTrack.artist = the_track.artist['#text'];
+                    this.recentTrack.album = the_track.album['#text'];
+                } else {
+                    // Error from the server
+                    throw 'Some kind of error from the server';
+                }
             };
+
+            // Handle any errors
+            request.onerror = function() {
+                // Connection error
+                throw 'Some kind of connection error';
+            };
+
+            // Send the request
+            request.send();
         },
 
         /*
@@ -74,11 +103,16 @@
     Spotify.init = function(selector, username, api_key, width, height) {
         var self = this;
 
-        self.selector: selector || '';
-        self.username: username || '';
-        self.api_key: api_key || '';
-        self.width: width || 300;
-        self.height: height || 400;
+        self.selector = selector || '';
+        self.username = username || '';
+        self.api_key = api_key || '';
+        self.width = width || '300';
+        self.height = height || '400';
+        self.lastfmTrack = {
+            title: '',
+            artist: '',
+            album: ''
+        };
 
         // Validate the Last.fm username and api_key
         self.validateLastFM();
