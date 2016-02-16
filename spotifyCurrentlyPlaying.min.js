@@ -4,7 +4,7 @@
  *  Spotify Currently Playing - v1.0.0
  *  ----------------------------------
  *
- *  Display your most recently played Spotify song using Last.fm scrobbling.
+ *  Display your currently playing Spotify song using Last.fm scrobbling.
  *
  *  https://github.com/kjbrum/spotify-currently-playing
  *  @license Copyright (c) Kyle Brumm <http://kylebrumm.com>

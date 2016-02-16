@@ -1,6 +1,6 @@
 # Spotify Currently Playing
 
-> Display your most recently played Spotify song using Last.fm scrobbling.
+> Display your currently playing Spotify song using Last.fm scrobbling.
 
 ## Documentation
 
