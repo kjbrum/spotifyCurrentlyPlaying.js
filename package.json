@@ -2,9 +2,8 @@
   "name": "spotifyCurrentlyPlaying",
   "version": "1.0.0",
   "description": "Display your currently playing Spotify song using Last.fm scrobbling.",
-  "main": "index.js",
   "scripts": {
-    "browsersync": "browser-sync start --files 'style.css, js/*.min.js, **/*.php' --proxy scp.dev --tunnel 'hmkyle'",
+    "browsersync": "browser-sync start --server --files 'style.css, js/*.min.js, **/*.php'",
     "build": "npm run css:build",
     "css": "npm run css:watch",
     "css:autoprefix": "postcss --use autoprefixer --output style.css style.css",

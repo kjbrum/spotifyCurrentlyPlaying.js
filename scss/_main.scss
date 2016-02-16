@@ -1,5 +1,10 @@
 // Main
 
+html,
+body {
+    min-height: 100%;
+}
+
 body {
 	background: $white;
 	font: 100%/1.5 $font;
