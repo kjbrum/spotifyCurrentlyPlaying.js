@@ -6,7 +6,7 @@
  *  https://github.com/kjbrum/spotify-currently-playing
  *  Kyle Brumm (http://kylebrumm.com)
  *
- *  Display the song that is currently playing on your Spotify.
+ *  Display your most recently played Spotify song using Last.fm scrobbling.
  *
  */
 
