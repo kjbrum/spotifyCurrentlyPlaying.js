@@ -12,9 +12,13 @@
                 throw 'Missing selector';
             }
 
+            // Get the most recent track
             this.queryLastfm();
-            console.log(this.recentTrack);
-            // var track = this.searchSpotify(recentTrack.title, recentTrack.artist, recentTrack.album);
+
+            console.log(this.lastfmTrack);
+
+            // Get the track URI from Spotify
+            // this.searchSpotify(lastfmTrack.title, lastfmTrack.artist, lastfmTrack.album);
 
             // TODO
             // Display the Spotify player using the selector and the track information
@@ -67,9 +71,9 @@
                         the_track = data.recenttracks.track;
                     }
 
-                    this.recentTrack.title = the_track.name;
-                    this.recentTrack.artist = the_track.artist['#text'];
-                    this.recentTrack.album = the_track.album['#text'];
+                    this.lastfmTrack.title = the_track.name;
+                    this.lastfmTrack.artist = the_track.artist['#text'];
+                    this.lastfmTrack.album = the_track.album['#text'];
                 } else {
                     // Error from the server
                     throw 'Some kind of error from the server';
@@ -94,9 +98,9 @@
 
             // TODO
             // 1. Make an API call to look for the supplied track information
-            // 2. Return the track URI if one was found, else throw an error
+            // 2. Set the track URI if one was found, else throw an error
 
-            return 'uri';
+            this.spotifyURI = 'spotify-uri';
         }
     };
 
@@ -113,6 +117,7 @@
             artist: '',
             album: ''
         };
+        self.spotifyURI = '';
 
         // Validate the Last.fm username and api_key
         self.validateLastFM();
