@@ -14,7 +14,11 @@
 
             var self = this;
             // Get the most recent track
-            this.queryLastfm(this.searchSpotify);
+            this.queryLastfm(function() {
+                self.searchSpotify(function() {
+                    console.log(self.spotifyURI);
+                });
+            });
 
 
 
@@ -96,15 +100,54 @@
         /*
          * Search for track information on Spotify
          */
-        searchSpotify: function(trackInfo) {
+        searchSpotify: function(callback) {
             console.log('Searching Spotify...');
-            console.log(trackInfo);
 
-            // TODO
-            // 1. Make an API call to look for the supplied track information
-            // 2. Set the track URI if one was found, else throw an error
+            var self = this;
 
-            this.spotifyURI = 'spotify-uri';
+            var search_query = '';
+            var track = self.lastfmTrack;
+            for(var key in track) {
+                // Skip if the property is from prototype
+                if (!track.hasOwnProperty(key)) continue;
+
+                if(track[key]) {
+                    search_query += key+':'+track[key]+' ';
+                }
+            }
+
+            // Set the request URL for Spotify
+            var spotify_request_url = 'https://api.spotify.com/v1/search?query='+encodeURIComponent(search_query)+'&offset=0&limit=1&type=track';
+
+            // Make a request to the Spotify API
+            var request = new XMLHttpRequest();
+            request.open('GET', spotify_request_url, true);
+
+            // Check for a successful response
+            request.onload = function() {
+                if(request.status >= 200 && request.status < 400) {
+                    // Success!
+                    var data = JSON.parse(request.responseText);
+
+                    if(data.tracks.items[0]) {
+                        self.spotifyURI = data.tracks.items[0].uri;
+                    }
+
+                    callback();
+                } else {
+                    // Error from the server
+                    throw 'Some kind of error from the server';
+                }
+            };
+
+            // Handle any errors
+            request.onerror = function() {
+                // Connection error
+                throw 'Some kind of connection error';
+            };
+
+            // Send the request
+            request.send();
         }
     };
 
