@@ -54,36 +54,13 @@
         },
 
         /*
-         * Validate the supplied Last.FM username and api key
-         */
-        validateLastFM: function() {
-            // Check for missing username
-            if(!this.username) {
-                throw 'missing username';
-            }
-
-            // Check for missing api key
-            if(!this.api_key) {
-                throw 'missing api_key';
-            }
-
-            console.log('Validating Last.FM...');
-            console.log('Username: ' + this.username);
-            console.log('API Key: ' + this.api_key);
-
-            // TODO
-            // 1. Make an API call to see if the username and api_key work
-            // 2. Throw an error if something goes wrong
-        },
-
-        /*
          * Get the most recently scrobbled track from Last.fm
          */
         queryLastfm: function(callback) {
             var self = this;
 
             // Set the request URL for Last.fm
-            var lastfm_request_url = 'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user='+this.username+'&api_key='+this.api_key+'&limit=1&format=json';
+            var lastfm_request_url = 'http://ws.audio.com/2.0/?method=user.getrecenttracks&user='+this.username+'&api_key='+this.api_key+'&limit=1&format=json';
 
             // Make a request to the Last.fm API
             var request = new XMLHttpRequest();
@@ -91,9 +68,10 @@
 
             // Check for a successful response
             request.onload = function() {
+                // Parse the response
+                var data = JSON.parse(request.responseText);
+
                 if(request.status >= 200 && request.status < 400) {
-                    // Parse the response
-                    var data = JSON.parse(request.responseText);
                     var the_track;
 
                     // Update our values
@@ -113,7 +91,7 @@
                     callback();
                 } else {
                     // Error from the server
-                    throw 'error from the server';
+                    throw data.message;
                 }
             };
 
@@ -154,10 +132,10 @@
 
             // Check for a successful response
             request.onload = function() {
-                if(request.status >= 200 && request.status < 400) {
-                    // Parse the response
-                    var data = JSON.parse(request.responseText);
+                // Parse the response
+                var data = JSON.parse(request.responseText);
 
+                if(request.status >= 200 && request.status < 400) {
                     // Update our values
                     if(data.tracks.items[0]) {
                         self.spotifyURI = data.tracks.items[0].uri;
@@ -167,7 +145,7 @@
                     callback();
                 } else {
                     // Error from the server
-                    throw 'error from the server';
+                    throw data.message;
                 }
             };
 
@@ -197,9 +175,6 @@
             album: ''
         };
         self.spotifyURI = '';
-
-        // Validate the Last.fm username and api_key
-        self.validateLastFM();
 
         // Display the Spotify player
         self.displayPlayer();
