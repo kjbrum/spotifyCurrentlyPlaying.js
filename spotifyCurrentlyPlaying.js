@@ -28,14 +28,23 @@
             // Get the most recent track
             this.queryLastfm(function() {
                 self.searchSpotify(function() {
-                    console.log(self.spotifyURI);
+                    if(self.spotifyURI != '') {
+                        if(typeof(self.selector) === 'string') {
+                            container = document.querySelector(self.selector);
+                        }
+
+                        var iframe = document.createElement('iframe');
+                        iframe.width = self.width;
+                        iframe.height = self.height;
+                        iframe.src = 'https://embed.spotify.com/?uri='+encodeURIComponent(self.spotifyURI);
+                        iframe.frameBorder = 0;
+                        iframe.setAttribute('allowtransparency', 'true');
+                        container.appendChild(iframe);
+                    } else {
+                        throw 'no track found';
+                    }
                 });
             });
-
-
-
-            // TODO
-            // Display the Spotify player using the selector and the track information
         },
 
         /*
