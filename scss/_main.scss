@@ -3,10 +3,10 @@
 html,
 body {
     min-height: 100%;
+    background: $primary;
 }
 
 body {
-	background: $white;
 	font: 100%/1.5 $font;
 	-webkit-text-size-adjust: 100%;
 	color: $black;

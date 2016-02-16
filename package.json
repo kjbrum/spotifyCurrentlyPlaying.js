@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "Display your currently playing Spotify song using Last.fm scrobbling.",
   "scripts": {
-    "browsersync": "browser-sync start --server --files 'style.css, js/*.min.js, **/*.php'",
+    "browsersync": "browser-sync start --server --files 'css/style.css, js, **/*.html'",
     "build": "npm run css:build",
     "css": "npm run css:watch",
     "css:autoprefix": "postcss --use autoprefixer --output style.css style.css",
     "css:build": "npm run css:compile && npm run css:autoprefix",
     "css:compile": "sass --style compressed scss/style.scss > css/style.css",
     "css:watch": "watch 'npm run css:build' scss",
-    "dev": "npm run watch | npm run browsersync",
+    "dev": "parallelshell 'npm run watch' 'npm run browsersync'",
     "watch": "npm run css"
   },
   "repository": {
@@ -26,6 +26,7 @@
   "devDependencies": {
     "autoprefixer": "latest",
     "node-sass": "latest",
+    "parallelshell": "^2.0.0",
     "postcss-cli": "latest",
     "watch": "latest"
   }
