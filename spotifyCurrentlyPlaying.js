@@ -27,12 +27,16 @@
             var self = this;
             // Get the most recent track
             this.queryLastfm(function() {
+                // Search Spotify for the track
                 self.searchSpotify(function() {
+                    // Display the iframe if we found a track URI
                     if(self.spotifyURI != '') {
+                        // Check the type of selector that was supplied
                         if(typeof(self.selector) === 'string') {
                             container = document.querySelector(self.selector);
                         }
 
+                        // Build the iframe element
                         var iframe = document.createElement('iframe');
                         iframe.width = self.width;
                         iframe.height = self.height;
@@ -41,7 +45,7 @@
                         iframe.setAttribute('allowtransparency', 'true');
                         container.appendChild(iframe);
                     } else {
-                        throw 'no track found';
+                        console.log('No track found');
                     }
                 });
             });
@@ -51,10 +55,12 @@
          * Validate the supplied Last.FM username and api key
          */
         validateLastFM: function() {
+            // Check for missing username
             if(!this.username) {
                 throw 'Missing username';
             }
 
+            // Check for missing api key
             if(!this.api_key) {
                 throw 'Missing api_key';
             }
@@ -72,7 +78,6 @@
          * Get the most recently scrobbled track from Last.fm
          */
         queryLastfm: function(callback) {
-            console.log('Querying Last.FM...');
             var self = this;
 
             // Set the request URL for Last.fm
@@ -85,10 +90,11 @@
             // Check for a successful response
             request.onload = function() {
                 if(request.status >= 200 && request.status < 400) {
-                    // Success!
+                    // Parse the response
                     var data = JSON.parse(request.responseText);
                     var the_track;
 
+                    // Update our values
                     if(data.recenttracks.track[0]) {
                         the_track = data.recenttracks.track[0];
                     } else {
@@ -101,7 +107,8 @@
                         album: the_track.album['#text']
                     };
 
-                    callback(self.lastfmTrack);
+                    // Run the callback function
+                    callback();
                 } else {
                     // Error from the server
                     throw 'Some kind of error from the server';
@@ -122,16 +129,15 @@
          * Search for track information on Spotify
          */
         searchSpotify: function(callback) {
-            console.log('Searching Spotify...');
-
             var self = this;
-
             var search_query = '';
             var track = self.lastfmTrack;
+
             for(var key in track) {
                 // Skip if the property is from prototype
                 if (!track.hasOwnProperty(key)) continue;
 
+                // Build the search query string
                 if(track[key]) {
                     search_query += key+':'+track[key]+' ';
                 }
@@ -147,13 +153,15 @@
             // Check for a successful response
             request.onload = function() {
                 if(request.status >= 200 && request.status < 400) {
-                    // Success!
+                    // Parse the response
                     var data = JSON.parse(request.responseText);
 
+                    // Update our values
                     if(data.tracks.items[0]) {
                         self.spotifyURI = data.tracks.items[0].uri;
                     }
 
+                    // Run the callback function
                     callback();
                 } else {
                     // Error from the server
@@ -172,6 +180,7 @@
         }
     };
 
+    // Handle initializing our function
     Spotify.init = function(selector, username, api_key, width, height) {
         var self = this;
 
