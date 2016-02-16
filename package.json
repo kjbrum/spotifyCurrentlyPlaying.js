@@ -1,10 +1,10 @@
 {
-  "name": "kandl",
+  "name": "spotifyCurrentlyPlaying",
   "version": "1.0.0",
-  "description": "WordPress Theme for Kyle and Laura's Wedding.",
+  "description": "Display your currently playing Spotify song using Last.fm scrobbling.",
   "main": "index.js",
   "scripts": {
-    "browsersync": "browser-sync start --files 'style.css, js/*.min.js, **/*.php' --proxy kandl.dev --tunnel 'hmkyle'",
+    "browsersync": "browser-sync start --files 'style.css, js/*.min.js, **/*.php' --proxy scp.dev --tunnel 'hmkyle'",
     "build": "npm run js:build && npm run css:build",
     "css": "npm run css:watch",
     "css:autoprefix": "postcss --use autoprefixer --output style.css style.css",
@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kjbrum/kandl.git"
+    "url": "https://github.com/kjbrum/spotifyCurrentlyPlaying.js.git"
   },
   "author": "Kyle Brumm",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kjbrum/kandl/issues"
+    "url": "https://github.com/kjbrum/spotifyCurrentlyPlaying.js/issues"
   },
-  "homepage": "https://github.com/kjbrum/kandl#readme",
+  "homepage": "https://github.com/kjbrum/spotifyCurrentlyPlaying.js#readme",
   "devDependencies": {
     "autoprefixer": "latest",
     "node-sass": "latest",
