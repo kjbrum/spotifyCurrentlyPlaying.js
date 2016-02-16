@@ -1,0 +1,15 @@
+// Functions
+
+@function strip-units($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@function rem-calc($px, $base-val: 16) {
+    @if not unitless($px) {
+        $px: strip-units($px);
+    }
+    @if not unitless($base-val) {
+        $base-val: strip-units($base-val);
+    }
+    @return ($px / $base-val) * 1rem;
+}

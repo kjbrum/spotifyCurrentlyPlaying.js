@@ -1,0 +1,49 @@
+// Utility
+
+// Clearfix
+.cf {
+    *zoom: 1;
+}
+.cf:before, .cf:after {
+    content: " ";
+    display: table;
+}
+.cf:after {
+    clear: both;
+}
+
+// Remove element
+.is-hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+// Remove element from flow
+.is-vishidden {
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+// Floats
+.right {
+	float: right;
+}
+.left {
+	float: left;
+}
+
+// Text align
+.align-right {
+	text-align: right;
+}
+.align-center {
+	text-align: center;
+}
+.align-left {
+	text-align: left;
+}

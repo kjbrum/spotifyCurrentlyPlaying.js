@@ -1,0 +1,30 @@
+// Main
+
+body {
+	background: $white;
+	font: 100%/1.5 $font;
+	-webkit-text-size-adjust: 100%;
+	color: $black;
+    min-width: $min-width;
+}
+
+a {
+    text-decoration: none;
+    color: $primary;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+        color: $primary-light;
+    }
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    border: none;
+}

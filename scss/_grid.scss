@@ -1,0 +1,259 @@
+// Grid
+
+.container {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 1rem;
+
+    @media all and (min-width: $bp-m) {
+        padding: 1rem 2rem;
+    }
+
+    @media all and (min-width: $bp-l) {
+        padding: 1rem;
+    }
+}
+
+// Grid container
+.g {
+    margin: 0 (-1rem);
+    zoom: 1;
+
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+// No padding grid
+.g-np {
+    > .gi {
+        padding: 0;
+    }
+}
+
+// Center grid
+.g-center {
+    text-align: center;
+    font-size: 0;
+
+    > .gi {
+        font-size: 1rem;
+        float: none !important;
+        display: inline-block;
+        text-align: left;
+    }
+
+    [class*='gi-fixed'] {
+        margin: 0 auto !important;
+    }
+}
+
+// Flexbox grid
+.flexbox .g-flex {
+    display: flex;
+    flex-flow: row wrap;
+
+    > .gi {
+        display: flex;
+
+        > .block {
+            display: flex;
+            flex-flow: column nowrap;
+            width: 100%;
+        }
+
+    }
+    > .gi-sticky .block > :last-child {
+        margin-top: auto;
+    }
+}
+
+// Grid item
+.gi {
+    position: relative;
+    padding: 1rem;
+    float: left;
+    width: 100%;
+
+    &.gi-np {
+        padding: 0;
+    }
+
+    img {
+        display: block;
+    }
+}
+
+// Reversed grid
+.g-opposites {
+    &.g-flex {
+        flex-flow: row-reverse wrap;
+    }
+
+    > .gi {
+        float: right;
+    }
+}
+
+// Build the grids!
+@each $breakpoint, $widths in $breakpoints {
+    [class*="show-#{$breakpoint}"] {
+        display: none;
+    }
+
+    [class*="hide-#{$breakpoint}"] {
+        // display: block;
+    }
+
+    @media all and (min-width: map-get(map-get($breakpoints, $breakpoint), min)) {
+        @for $i from 1 through $num-columns {
+            $bp-width: percentage($i/$num-columns);
+            $fixed-width: ($grid-width/$num-columns);
+
+            // Add grid-block support for up to $num-columns items
+            .g-#{$breakpoint}-#{$i} {
+                > .gi {
+                    width: percentage(1/$i);
+
+                    &:nth-of-type(1n) {
+                        clear: none;
+                    }
+
+                    &:nth-of-type(#{$i}n+1) {
+                        clear: both;
+                    }
+                }
+            }
+
+            // Add grid-item support
+            .gi-#{$breakpoint}-#{$i} {
+                width: $bp-width;
+            }
+
+            // Add grid-item offset support
+            .gi-offset-#{$breakpoint}-#{$i} {
+                margin-left: $bp-width;
+            }
+
+            // Add grid-item push support
+            .gi-push-#{$breakpoint}-#{$i} {
+                left: $bp-width;
+            }
+
+            // Add grid-item pull support
+            .gi-pull-#{$breakpoint}-#{$i} {
+                right: $bp-width;
+            }
+
+            // Add grid-item fill support
+            .gi-fill-#{$breakpoint}-#{$i} {
+                float: none;
+                width: auto;
+                margin-left: $fixed-width * ($num-columns - $i);
+            }
+
+            // Add grid-item fixed width support
+            .gi-fixed-#{$breakpoint}-#{$i},
+            .gi-fixed-right-#{$breakpoint}-#{$i} {
+                width: 100%;
+                max-width: $fixed-width * $i;
+            }
+            .gi-fixed-right-#{$breakpoint}-#{$i} {
+                float: right;
+            }
+
+            [class*='gi-fixed-right'] {
+                & + .gi-fill-#{$breakpoint}-#{$i} {
+                    margin-left: 0;
+                    margin-right: $fixed-width * ($num-columns - $i);
+                }
+            }
+
+            // Add support for fifths
+            @if $i < 6 {
+                $bp-fifth-width: percentage($i/5);
+                $fifth-fixed-width: ($grid-width/5);
+
+                // Add fifths grid-item support
+                .gi-#{$breakpoint}-#{$i}-5 {
+                    width: $bp-fifth-width;
+                }
+
+                // Add fifths grid-item offset support
+                .gi-offset-#{$breakpoint}-#{$i}-5 {
+                    margin-left: $bp-fifth-width;
+                }
+
+                // Add fifths grid-item push support
+                .gi-push-#{$breakpoint}-#{$i}-5 {
+                    left: $bp-fifth-width;
+                }
+
+                // Add fifths grid-item pull support
+                .gi-pull-#{$breakpoint}-#{$i}-5 {
+                    right: $bp-fifth-width;
+                }
+
+                // Add fifths grid-item fill support
+                .gi-fill-#{$breakpoint}-#{$i}-5 {
+                    float: none;
+                    width: auto;
+                    margin-left: $fifth-fixed-width * (5 - $i);
+                }
+
+                // Add fifths grid-item fixed width support
+                .gi-fixed-#{$breakpoint}-#{$i}-5,
+                .gi-fixed-right-#{$breakpoint}-#{$i}-5 {
+                    width: 100%;
+                    max-width: $fifth-fixed-width * $i;
+                }
+                .gi-fixed-right-#{$breakpoint}-#{$i}-5 {
+                    float: right;
+                }
+
+                [class*='gi-fixed-right'] {
+                    & + .gi-fill-#{$breakpoint}-#{$i}-5 {
+                        margin-left: 0;
+                        margin-right: $fifth-fixed-width * (5 - $i);
+                    }
+                }
+            }
+        }
+    }
+
+    @media all and (min-width: map-get(map-get($breakpoints, $breakpoint), min)) {
+        .show-#{$breakpoint}-up {
+            display: block !important;
+        }
+
+        .hide-#{$breakpoint}-up {
+            display: none !important;
+        }
+    }
+
+    @media all and (min-width: map-get(map-get($breakpoints, $breakpoint), min)) and (max-width: map-get(map-get($breakpoints, $breakpoint), max)) {
+        .show-#{$breakpoint} {
+            display: block !important;
+        }
+
+        .hide-#{$breakpoint} {
+            display: none !important;
+        }
+    }
+
+    @media all and (max-width: map-get(map-get($breakpoints, $breakpoint), max)) {
+        .show-#{$breakpoint}-down {
+            display: block !important;
+        }
+
+        .hide-#{$breakpoint}-down {
+            display: none !important;
+        }
+    }
+}
