@@ -4,21 +4,35 @@
     }
 
     Spotify.prototype = {
-        displayPlayer: function(selector, width, height) {
-            if(!selector) {
+        /*
+         * Display the Spotify player
+         */
+        displayPlayer: function() {
+            if(!this.selector) {
                 throw 'Missing selector';
             }
 
-            var msg;
-            if(formal) {
-                msg = this.formalGreeting();
-            } else {
-                msg = this.greeting();
+            // TODO
+            // 1. Query Last.FM
+            // 2. Search Spotify for the track
+            // 3. Display the Spotify player using the selector
+        },
+
+        /*
+         * Validate the supplied Last.FM username and api key
+         */
+        validateLastFM: function() {
+            if(!this.username) {
+                throw 'Missing username';
             }
 
-            $(selector).html(msg);
+            if(!this.api_key) {
+                throw 'Missing api_key';
+            }
 
-            return this;
+            console.log('Validating Last.FM...');
+            console.log('Username: ' + this.username);
+            console.log('API Key: ' + this.api_key);
         }
 
     };
@@ -32,10 +46,11 @@
         self.width: width || 300;
         self.height: height || 400;
 
-        // TODO
         // Validate the Last.fm username and api_key
+        self.validateLastFM();
 
-        self.displayPlayer(selector, width, height);
+        // Display the Spotify player
+        self.displayPlayer();
     }
 
     Spotify.init.prototype = Spotify.prototype;
