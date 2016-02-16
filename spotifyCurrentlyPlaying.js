@@ -33,7 +33,24 @@
             console.log('Validating Last.FM...');
             console.log('Username: ' + this.username);
             console.log('API Key: ' + this.api_key);
-        }
+        },
+
+        /*
+         * Get the most recently scrobbled track from LastFM
+         */
+        queryLastFM: function() {
+            console.log('Querying Last.FM...');
+
+            // TODO
+            // 1. Make an API call to get the most recent track information
+            // 2. Return the results = {title, artist, album}
+
+            return {
+                title: 'title',
+                artist: 'artist',
+                album: 'album'
+            };
+        },
 
     };
 
