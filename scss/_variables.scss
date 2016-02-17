@@ -16,14 +16,14 @@ $secondary: #453E5D;
 $secondary-light: #57506E;
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,600|Roboto:400,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,600|Fjalla+One);
 $helvetica: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $georgia: Georgia, Times, serif;
 $raleway: 'Raleway', $helvetica;
-$roboto: 'Roboto Slab', $georgia;
+$fjalla: 'Fjalla One', $helvetica;
 
 $font: $raleway;
-$font-secondary: $roboto;
+$font-secondary: $fjalla;
 
 // Layout
 $max-width: 72rem;
