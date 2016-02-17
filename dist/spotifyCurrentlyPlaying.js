@@ -12,11 +12,11 @@
  */
 
 ;(function(global) {
-    var Spotify = function(selector, username, api_key, width, height) {
-        return new Spotify.init(selector, username, api_key, width, height);
+    var SpotifyCurrentlyPlaying = function(selector, username, api_key, width, height) {
+        return new SpotifyCurrentlyPlaying.init(selector, username, api_key, width, height);
     }
 
-    Spotify.prototype = {
+    SpotifyCurrentlyPlaying.prototype = {
         /*
          * Display the Spotify player
          */
@@ -161,7 +161,7 @@
     };
 
     // Handle initializing our function
-    Spotify.init = function(selector, username, api_key, width, height) {
+    SpotifyCurrentlyPlaying.init = function(selector, username, api_key, width, height) {
         var self = this;
 
         self.selector = selector || '';
@@ -180,7 +180,7 @@
         self.displayPlayer();
     }
 
-    Spotify.init.prototype = Spotify.prototype;
+    SpotifyCurrentlyPlaying.init.prototype = SpotifyCurrentlyPlaying.prototype;
 
-    global.Spotify = global.SCP = Spotify;
+    global.SpotifyCurrentlyPlaying = global.SCP = SpotifyCurrentlyPlaying;
 }(window));
