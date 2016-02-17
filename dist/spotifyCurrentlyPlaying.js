@@ -1,8 +1,8 @@
 /**
  *
- *  ----------------------------------
+ *  -----------------------------------
  *  spotifyCurrentlyPlaying.js - v1.0.0
- *  ----------------------------------
+ *  -----------------------------------
  *
  *  Display your currently playing Spotify song using Last.fm scrobbling.
  *
