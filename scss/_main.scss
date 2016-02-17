@@ -77,6 +77,12 @@ p {
 
     li {
         display: inline-block;
+        transform: translateY(0);
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+            transform: translateY(-10px);
+        }
     }
 }
 
@@ -103,13 +109,13 @@ p {
 }
 
 .section--hero {
-    padding: 4rem 0;
-    text-align: center;
+    padding: 2rem 0;
+    // text-align: center;
     background: $primary;
     color: $secondary;
 
     h1 {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         font-weight: bold;
 
         @media all and (min-width: $bp-xs) {
@@ -126,10 +132,10 @@ p {
     }
 
     h3 {
-        font-size: 1rem;
+        font-size: 0.9rem;
 
         @media all and (min-width: $bp-s) {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
         }
     }
 }
