@@ -43,10 +43,6 @@ img {
 pre {
     border-radius: 3px;
     font-size: 0.8rem;
-
-    @media all and (min-width: $bp-s) {
-        font-size: 1rem;
-    }
 }
 
 p {
