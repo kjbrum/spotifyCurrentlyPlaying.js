@@ -18,7 +18,7 @@
     "url": "https://github.com/kjbrum/spotifyCurrentlyPlaying.js.git"
   },
   "author": "Kyle Brumm",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kjbrum/spotifyCurrentlyPlaying.js/issues"
   },
@@ -26,7 +26,7 @@
   "devDependencies": {
     "autoprefixer": "latest",
     "node-sass": "latest",
-    "parallelshell": "^2.0.0",
+    "parallelshell": "latest",
     "postcss-cli": "latest",
     "watch": "latest"
   }
