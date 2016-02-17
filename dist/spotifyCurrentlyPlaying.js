@@ -47,6 +47,10 @@
                         iframe.setAttribute('allowtransparency', 'true');
                         container.appendChild(iframe);
                     } else {
+                        var paragraph = document.createElement('p');
+                        var paragraph_text = document.createTextNode('No tracks were found on Spotify.');
+                        paragraph.appendChild(paragraph_text);
+                        container.appendChild(paragraph);
                         console.log('No tracks were found on Spotify.');
                     }
                 });
