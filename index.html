@@ -87,14 +87,14 @@
                     <small class="subheading">Feel free to use whichever method is easiest for your project.</small>
                 </div>
 
-                <h4>Using Bower</h4>
+                <h4>Using Bower:</h4>
                 <pre>$ bower install spotifyCurrentlyPlaying.js</pre>
 
-                <h4>Using npm</h4>
+                <h4>Using npm:</h4>
                 <pre>$ npm install spotifyCurrentlyPlaying.js</pre>
 
-                <h4>Cloning the repository</h4>
-                <pre>$ git clone git@github.com:kjbrum/spotifyCurrentlyPlaying.js.git</pre>
+                <h4>Direct (cURL):</h4>
+                <pre>$ curl https://git.io/vgAwN > spotifyCurrentlyPlaying.min.js</pre>
 
                 <hr>
 
@@ -111,14 +111,15 @@
                     <small class="subheading">Lets figure out how to make this thing work.</small>
                 </div>
 
-                <h4>Add the script before the closing body tag</h4>
-                <pre>&lt;script src="spotifyCurrentlyPlaying.min.js"&gt;&lt;/script&gt;</pre>
+                <h4>Add the script:</h4>
+                <pre><span class="comment">// Place this before the closing body tag</span>
+&lt;script src="path/to/spotifyCurrentlyPlaying.min.js"&gt;&lt;/script&gt;</pre>
 
-                <h4>Create a container</h4>
+                <h4>Create a container:</h4>
                 <pre><span class="comment">// This will be used to display the Spotify widget</span>
 &lt;div id="spotify-widget"&gt;&lt;/div&gt;</pre>
 
-                <h4>Call the SCP( ) function</h4>
+                <h4>Call the SCP( ) function:</h4>
                 <pre><span class="comment">// You will need to pass your parameters to the function
 // You can initialize it with SCP() or SpotifyCurrentlyPlaying()
 // Example: SCP('.selector_or_element', 'lastfm_username', 'lastfm_api_key', 'width', 'height');</span>
