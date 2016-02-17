@@ -137,6 +137,23 @@ SCP('#spotify-widget', 'kjbrum', 'xxxxxxxxxxxxxxx', '100%', '300');</code></pre>
             </div>
         </section>
 
+        <!-- Share section -->
+        <section class="section section--share">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Spread the <i class="fa fa-heart"></i></h2>
+                    <small class="subheading">Things are better when shared with friends.</small>
+                </div>
+
+                <ul class="social-share">
+                    <li><a href="https://twitter.com/intent/tweet?text=Add+a+Spotify+widget+to+your+website+that+displays+your+currently+playing+song.&url=https://git.io/vgNVY"><i class="fa fa-twitter-square"></i></a></li>
+                    <li><a href="http://www.facebook.com/sharer/sharer.php?u=https://git.io/vgNVY"><i class="fa fa-facebook-square"></i></a></li>
+                    <li><a href="https://plus.google.com/share?url=https://git.io/vgNVY"><i class="fa fa-google-plus-square"></i></a></li>
+                    <li><a href="http://pinterest.com/pin/create/button/?url=https://git.io/vgNVY&description=Add+a+Spotify+widget+to+your+website+that+displays+your+currently+playing+song.&media=http://kylebrumm.com/spotifyCurrentlyPlaying.js/img/spotify-currently-playing.png"><i class="fa fa-pinterest-square"></i></a></li>
+                </ul>
+            </div>
+        </section>
+
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
@@ -151,6 +168,33 @@ SCP('#spotify-widget', 'kjbrum', 'xxxxxxxxxxxxxxx', '100%', '300');</code></pre>
             ;(function(global) {
                 // Initialize the Spotify widget
                 SCP('#scp', 'kjbrum', 'da3d6b59d72cbd535ce2405ec13b97be', '100%', '370');
+
+                /**
+                 *  Social sharing popup window
+                 */
+                var jsSocialShares = document.querySelectorAll('.social-share a');
+                if(jsSocialShares) {
+                    [].forEach.call(jsSocialShares, function(anchor) {
+                        anchor.addEventListener('click', function(e) {
+
+                            var url = this.href,
+                                width = 500,
+                                height = 300,
+                                left = (screen.width / 2) - (width / 2),
+                                top = (screen.height / 2) - (height / 2);
+
+                            if(/^(f|ht)tps?:\/\//i.test(url) || /^mailto/i.test(url)) {
+                                e.preventDefault();
+                                window.open(
+                                    url,
+                                    '',
+                                    'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=' + width + ',height=' + height + ',top=' + top + ',left=' + left
+                                );
+                            }
+
+                        });
+                    });
+                }
             })(window);
         </script>
 

@@ -67,6 +67,19 @@ p {
     color: $secondary;
 }
 
+.social-share {
+    font-size: 4rem;
+    line-height: 0;
+
+    @media all and (min-width: $bp-xs) {
+        font-size: 6rem;
+    }
+
+    li {
+        display: inline-block;
+    }
+}
+
 // Sections
 .section {
     padding: 0;
@@ -122,6 +135,6 @@ p {
 }
 
 .section--hero,
-.section--results {
+.section--share {
     border-bottom: none;
 }
