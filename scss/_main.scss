@@ -57,6 +57,16 @@ p {
     }
 }
 
+::selection {
+    background: $white;
+    color: $secondary;
+}
+
+::-moz-selection {
+    background: $white;
+    color: $secondary;
+}
+
 // Sections
 .section {
     padding: 0;
