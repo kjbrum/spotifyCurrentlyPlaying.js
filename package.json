@@ -8,7 +8,7 @@
     "css": "npm run css:watch",
     "css:autoprefix": "postcss --use autoprefixer --output style.css style.css",
     "css:build": "npm run css:compile && npm run css:autoprefix",
-    "css:compile": "sass --style compressed scss/style.scss > css/style.css",
+    "css:compile": "node-sass --output-style compressed scss/style.scss css/style.css",
     "css:watch": "watch 'npm run css:build' scss",
     "dev": "parallelshell 'npm run watch' 'npm run browsersync'",
     "watch": "npm run css"
