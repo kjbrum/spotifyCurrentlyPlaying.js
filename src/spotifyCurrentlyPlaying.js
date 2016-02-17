@@ -182,5 +182,5 @@
 
     Spotify.init.prototype = Spotify.prototype;
 
-    global.Spotify = Spotify;
+    global.Spotify = global.SCP = Spotify;
 }(window));
