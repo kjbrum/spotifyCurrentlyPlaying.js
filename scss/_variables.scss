@@ -3,19 +3,26 @@
 // Colors
 $white : #fff;
 $black : #333333;
-$primary: #A4F56B;
-$primary-light: #D6FFB5;
-$secondary: #482C42;
-$secondary-light: #6B5266;
+
+// Old colors
+// $primary: #A4F56B;
+// $primary-light: #D6FFB5;
+// $secondary: #482C42;
+// $secondary-light: #6B5266;
+
+$primary: #98E494;
+$primary-light: #B3F5B1;
+$secondary: #453E5D;
+$secondary-light: #57506E;
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:100,300|Roboto:400,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,600|Roboto:400,700);
 $helvetica: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $georgia: Georgia, Times, serif;
 $raleway: 'Raleway', $helvetica;
 $roboto: 'Roboto Slab', $georgia;
 
-$font: $helvetica;
+$font: $raleway;
 $font-secondary: $roboto;
 
 // Layout
