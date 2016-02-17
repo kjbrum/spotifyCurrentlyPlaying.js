@@ -40,11 +40,6 @@ img {
     max-width: 100%;
 }
 
-pre {
-    border-radius: 3px;
-    font-size: 0.8rem;
-}
-
 p {
     font-size: 0.9rem;
 
@@ -80,6 +75,48 @@ p {
             transform: translateY(-10px);
         }
     }
+}
+
+// Pre/Code
+
+code,
+pre {
+    color: $white;
+    background: $secondary-light;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    border-radius: 3px;
+    font-size: 0.8rem;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+
+    .comment {
+        color: $gray;
+    }
+}
+
+pre {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    overflow: auto;
+}
+
+:not(pre) > code {
+    padding: 0.1rem;
+    white-space: normal;
 }
 
 // Sections

@@ -88,13 +88,13 @@
                 </div>
 
                 <h4>Using Bower</h4>
-                <pre><code class="language-bash">$ bower install spotifyCurrentlyPlaying.js</code></pre>
+                <pre><code>$ bower install spotifyCurrentlyPlaying.js</code></pre>
 
                 <h4>Using npm</h4>
-                <pre><code class="language-bash">$ npm install spotifyCurrentlyPlaying.js</code></pre>
+                <pre><code>$ npm install spotifyCurrentlyPlaying.js</code></pre>
 
                 <h4>Cloning the repository</h4>
-                <pre><code class="language-bash">$ git clone git@github.com:kjbrum/spotifyCurrentlyPlaying.js.git</code></pre>
+                <pre><code>$ git clone git@github.com:kjbrum/spotifyCurrentlyPlaying.js.git</code></pre>
 
                 <hr>
 
@@ -112,15 +112,16 @@
                 </div>
 
                 <h4>Add the script before the closing body tag</h4>
-                <pre><code class="language-markup"><script src="spotifyCurrentlyPlaying.min.js"></script></code></pre>
+                <pre><code><script src="spotifyCurrentlyPlaying.min.js"></script></code></pre>
 
                 <h4>Create a container</h4>
-                <pre class="language-markup">// This will be used to display the Spotify widget
+                <pre><code><span class="comment">// This will be used to display the Spotify widget</span>
                 <div id="spotify-widget"></div></code></pre>
 
                 <h4>Call the SCP( ) function</h4>
-                <pre class="language-javascript">// You will need to pass your parameters to the function
-// SCP('.selector_or_element', 'lastfm_username', 'lastfm_api_key', 'width', 'height');
+                <pre><code><span class="comment">// You will need to pass your parameters to the function
+// You can initialize it with SCP() or SpotifyCurrentlyPlaying()
+// Example: SCP('.selector_or_element', 'lastfm_username', 'lastfm_api_key', 'width', 'height');</span>
 SCP('#spotify-widget', 'kjbrum', 'xxxxxxxxxxxxxxx', '100%', '300');</code></pre>
             </div>
         </section>
@@ -163,7 +164,6 @@ SCP('#spotify-widget', 'kjbrum', 'xxxxxxxxxxxxxxx', '100%', '300');</code></pre>
 
         <!-- Scripts -->
         <script src="js/spotifyCurrentlyPlaying.min.js"></script>
-        <script src="js/prism.js" data-default-language="markup"></script>
         <script>
             ;(function(global) {
                 // Initialize the Spotify widget
