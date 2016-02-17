@@ -80,7 +80,8 @@ p {
 // Pre/Code
 
 code,
-pre {
+pre,
+xmp {
     color: $white;
     background: $secondary-light;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
@@ -93,6 +94,7 @@ pre {
     line-height: 1.5;
     border-radius: 3px;
     font-size: 0.8rem;
+    margin: 0;
 
     -moz-tab-size: 4;
     -o-tab-size: 4;
@@ -108,7 +110,8 @@ pre {
     }
 }
 
-pre {
+pre,
+:not(pre) > xmp {
     padding: 1rem;
     margin: 0.5rem 0;
     overflow: auto;
