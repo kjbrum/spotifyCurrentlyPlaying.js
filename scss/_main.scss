@@ -60,6 +60,7 @@ p {
 // Sections
 .section {
     padding: 0;
+    border-bottom: 5px solid $secondary-light;
 
     @media all and (min-width: $bp-s) {
         padding: 1rem 0;
@@ -83,6 +84,7 @@ p {
     text-align: center;
     background: $primary;
     color: $secondary;
+    border-bottom: none;
 
     h1 {
         font-size: 1.25rem;
@@ -108,4 +110,8 @@ p {
             font-size: 1.5rem;
         }
     }
+}
+
+.section--setup {
+    border-bottom: none;
 }
