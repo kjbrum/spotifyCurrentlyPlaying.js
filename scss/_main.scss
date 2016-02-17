@@ -84,7 +84,6 @@ p {
     text-align: center;
     background: $primary;
     color: $secondary;
-    border-bottom: none;
 
     h1 {
         font-size: 1.25rem;
@@ -112,6 +111,7 @@ p {
     }
 }
 
-.section--setup {
+.section--hero,
+.section--results {
     border-bottom: none;
 }
