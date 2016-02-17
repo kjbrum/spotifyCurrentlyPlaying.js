@@ -58,22 +58,41 @@
             <div class="container">
                 <div class="section-heading">
                     <h2>Install</h2>
-                    <small class="subheading">Feel free to use whichever method is easiest for your project.</small class="subheading">
+                    <small class="subheading">Feel free to use whichever method is easiest for your project.</small>
                 </div>
 
                 <h4>Using Bower</h4>
-                <pre><code class="language-html">$ bower install spotifyCurrentlyPlaying.js</code></pre>
+                <pre><code class="language-none">$ bower install spotifyCurrentlyPlaying.js</code></pre>
 
                 <h4>Using npm</h4>
-                <pre><code class="language-html">$ npm install spotifyCurrentlyPlaying.js</code></pre>
+                <pre><code class="language-none">$ npm install spotifyCurrentlyPlaying.js</code></pre>
 
                 <h4>Cloning the repository</h4>
-                <pre><code class="language-html">$ git clone git@github.com:kjbrum/spotifyCurrentlyPlaying.js.git</code></pre>
+                <pre><code class="language-none">$ git clone git@github.com:kjbrum/spotifyCurrentlyPlaying.js.git</code></pre>
 
                 <hr>
 
                 <a class="btn shake shake-little" href="https://github.com/kjbrum/spotifyCurrentlyPlaying.js/" target="_blank">View on Github</a>
                 <a class="btn shake shake-little" href="https://github.com/kjbrum/spotifyCurrentlyPlaying.js/archive/master.zip">Download Repo</a>
+            </div>
+        </section>
+
+        <!-- Setup section -->
+        <section class="section section--setup">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Setup</h2>
+                    <small class="subheading">Lets figure out how to make this thing work.</small>
+                </div>
+
+                <h4>Create a container</h4>
+                <pre class="language-none">// This will be used to display the Spotify widget
+                <div id="spotify-widget"></div></code></pre>
+
+                <h4>Call the SCP( ) function</h4>
+                <pre class="language-none">// You will need to pass your parameters to the function
+// SCP('.selector_or_element', 'lastfm_username', 'lastfm_api_key', 'width', 'height');
+SCP('#spotify-widget', 'kjbrum', 'xxxxxxxxxxxxxxx', '100%', '300');</code></pre>
             </div>
         </section>
 
