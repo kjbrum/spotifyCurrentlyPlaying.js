@@ -31,15 +31,15 @@
             this.queryLastfm(function() {
                 // Search Spotify for the track
                 self.searchSpotify(function() {
-                    // Check the type of selector that was supplied
                     var container = self.selector;
+
+                    // Check the type of selector that was supplied
                     if(typeof(self.selector) === 'string') {
                         container = document.querySelector(self.selector);
                     }
 
                     // Display the iframe if we found a track URI
                     if(self.spotifyURI != '') {
-
                         // Build the iframe element
                         var iframe = document.createElement('iframe');
                         iframe.width = self.width;
