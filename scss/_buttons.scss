@@ -3,19 +3,22 @@
 .btn,
 .button {
 	display: inline-block;
-	background: $primary;
-	color: $white;
+	// background: $primary;
+	color: $primary;
 	line-height: 1;
 	font-weight: normal;
 	padding: 1rem;
-	border: 0;
+	border: 1px solid $primary;
 	text-align: center;
     font-family: $font;
     font-size: 1rem;
     cursor: pointer;
+    transition: none;
 
-	&:hover, &:focus {
-		background: $secondary-light;
+	&:hover,
+	&:focus {
+		color: $secondary;
+		background: $primary;
 	}
 
 	&.disabled {

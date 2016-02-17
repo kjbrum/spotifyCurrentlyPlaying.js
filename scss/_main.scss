@@ -29,12 +29,24 @@ ul {
     padding: 0;
 }
 
+hr {
+    border: 0;
+    margin: 1.25rem 0;
+    height: 1px;
+    background: $primary;
+}
+
 img {
     max-width: 100%;
 }
 
 pre {
     border-radius: 3px;
+    font-size: 0.8rem;
+
+    @media all and (min-width: $bp-s) {
+        font-size: 1rem;
+    }
 }
 
 // Sections
@@ -47,6 +59,14 @@ pre {
 
     @media all and (min-width: $bp-l) {
         padding: 3rem 0;
+    }
+
+    h4 {
+        margin-top: 1.25rem;
+
+        &:first-of-type {
+            margin-top: 0;
+        }
     }
 }
 
