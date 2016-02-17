@@ -32,3 +32,52 @@ ul {
 img {
     max-width: 100%;
 }
+
+pre {
+    border-radius: 3px;
+}
+
+// Sections
+.section {
+    padding: 0;
+
+    @media all and (min-width: $bp-s) {
+        padding: 2rem 0;
+    }
+
+    @media all and (min-width: $bp-l) {
+        padding: 3rem 0;
+    }
+}
+
+.section--hero {
+    padding: 4rem 0;
+    text-align: center;
+    background: $primary;
+    color: $secondary;
+
+    h1 {
+        font-size: 1.25rem;
+        font-weight: bold;
+
+        @media all and (min-width: $bp-xs) {
+            font-size: 2rem;
+        }
+
+        @media all and (min-width: $bp-s) {
+            font-size: 3rem;
+        }
+
+        @media all and (min-width: $bp-m) {
+            font-size: 4rem;
+        }
+    }
+
+    h3 {
+        font-size: 1rem;
+
+        @media all and (min-width: $bp-s) {
+            font-size: 1.5rem;
+        }
+    }
+}
