@@ -1,5 +1,5 @@
 {
-  "name": "spotifyCurrentlyPlaying",
+  "name": "spotifyCurrentlyPlaying.js",
   "version": "1.0.0",
   "description": "Display your currently playing Spotify song using Last.fm scrobbling.",
   "scripts": {
