@@ -38,8 +38,6 @@
                         container = document.querySelector(self.selector);
                     }
 
-                    self.spotifyURI = '';
-
                     // Display the iframe if we found a track URI
                     if(self.spotifyURI != '') {
                         // Build the iframe element
