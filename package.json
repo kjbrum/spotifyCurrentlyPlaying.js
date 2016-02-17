@@ -1,0 +1,26 @@
+{
+  "name": "spotifyCurrentlyPlaying",
+  "version": "1.0.0",
+  "description": "Display your currently playing Spotify song using Last.fm scrobbling.",
+  "scripts": {
+    "minify": "uglifyjs src/spotifyCurrentlyPlaying.js -c -m --comments='@license' -o spotifyCurrentlyPlaying.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kjbrum/spotifyCurrentlyPlaying.js.git"
+  },
+  "author": "Kyle Brumm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kjbrum/spotifyCurrentlyPlaying.js/issues"
+  },
+  "homepage": "https://github.com/kjbrum/spotifyCurrentlyPlaying.js#readme",
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "node-sass": "latest",
+    "parallelshell": "latest",
+    "postcss-cli": "latest",
+    "uglifyjs": "latest",
+    "watch": "latest"
+  }
+}
