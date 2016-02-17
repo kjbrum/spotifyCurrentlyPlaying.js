@@ -12,6 +12,9 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 
 - Turn into a Bower package
 - Turn into an Npm package
+- Add a `theme` parameter to switch between dark and light
+- Add a "Browser Support" section
+- Add `backup_uri` parameter to display when a track isn't found
 
 
 ## License

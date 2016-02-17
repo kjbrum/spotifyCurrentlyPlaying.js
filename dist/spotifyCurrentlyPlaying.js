@@ -38,6 +38,8 @@
                         container = document.querySelector(self.selector);
                     }
 
+                    self.spotifyURI = '';
+
                     // Display the iframe if we found a track URI
                     if(self.spotifyURI != '') {
                         // Build the iframe element
@@ -50,10 +52,9 @@
                         container.appendChild(iframe);
                     } else {
                         var paragraph = document.createElement('p');
-                        var paragraph_text = document.createTextNode('No tracks were found on Spotify.');
+                        var paragraph_text = document.createTextNode('No track found.');
                         paragraph.appendChild(paragraph_text);
                         container.appendChild(paragraph);
-                        console.log('No tracks were found on Spotify.');
                     }
                 });
             });
