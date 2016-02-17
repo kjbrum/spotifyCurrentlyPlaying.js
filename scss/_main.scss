@@ -3,13 +3,13 @@
 html,
 body {
     min-height: 100%;
-    background: $primary;
+    background: $secondary;
 }
 
 body {
 	font: 100%/1.5 $font;
 	-webkit-text-size-adjust: 100%;
-	color: $white;
+	color: $primary;
     min-width: $min-width;
 }
 
@@ -31,5 +31,4 @@ ul {
 
 img {
     max-width: 100%;
-    border: none;
 }
