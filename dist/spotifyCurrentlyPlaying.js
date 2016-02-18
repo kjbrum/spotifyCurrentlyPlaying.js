@@ -44,7 +44,7 @@
                         var iframe = document.createElement('iframe');
                         iframe.width = self.width;
                         iframe.height = self.height;
-                        iframe.src = 'https://embed.spotify.com/?uri='+encodeURIComponent(self.spotifyURI);
+                        iframe.src = 'https://embed.spotify.com/?uri='+self.spotifyURI;
                         iframe.frameBorder = 0;
                         iframe.setAttribute('allowtransparency', 'true');
                         container.appendChild(iframe);
