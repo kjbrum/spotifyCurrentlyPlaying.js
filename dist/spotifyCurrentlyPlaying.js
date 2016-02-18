@@ -12,8 +12,8 @@
  */
 
 ;(function(global) {
-    var SpotifyCurrentlyPlaying = function(selector, username, api_key, width, height, theme, view) {
-        return new SpotifyCurrentlyPlaying.init(selector, username, api_key, width, height, theme, view);
+    var SpotifyCurrentlyPlaying = function(selector, username, api_key, width, height, theme, view, backup_id) {
+        return new SpotifyCurrentlyPlaying.init(selector, username, api_key, width, height, theme, view, backup_id);
     }
 
     SpotifyCurrentlyPlaying.prototype = {
@@ -39,14 +39,22 @@
                     }
 
                     // Display the iframe if we found a track URI
-                    if(self.spotifyURI != '') {
-                        // Build the iframe element
+                    if(self.spotifyURI != '' || self.backup_id != '') {
                         var iframe = document.createElement('iframe');
                         iframe.width = self.width;
                         iframe.height = self.height;
-                        iframe.src = 'https://embed.spotify.com/?uri='+self.spotifyURI+'&theme='+self.theme+'&view='+self.view;
                         iframe.frameBorder = 0;
                         iframe.setAttribute('allowtransparency', 'true');
+
+                        var track_uri;
+                        // Decide if we found a track or are showing the backup
+                        if(self.spotifyURI != '') {
+                            track_uri = self.spotifyURI;
+                        } else {
+                            track_uri = 'spotify:track:'+self.backup_id;
+                        }
+
+                        iframe.src = 'https://embed.spotify.com/?uri='+track_uri+'&theme='+self.theme+'&view='+self.view;
                         container.appendChild(iframe);
                     } else {
                         var paragraph = document.createElement('p');
@@ -166,16 +174,17 @@
     };
 
     // Handle initializing our function
-    SpotifyCurrentlyPlaying.init = function(selector, username, api_key, width, height, theme, view) {
+    SpotifyCurrentlyPlaying.init = function(selector, username, api_key, width, height, theme, view, backup_id) {
         var self = this;
 
-        self.selector = selector || '';
-        self.username = username || '';
-        self.api_key = api_key || '';
-        self.width = width || '300';
-        self.height = height || '400';
-        self.theme = theme || 'black';
-        self.view = view || 'list';
+        self.selector  = selector || '';
+        self.username  = username || '';
+        self.api_key   = api_key || '';
+        self.width     = width || '300';
+        self.height    = height || '400';
+        self.theme     = theme || 'black';
+        self.view      = view || 'list';
+        self.backup_id = backup_id || '';
 
         self.lastfmTrack = {
             title: '',

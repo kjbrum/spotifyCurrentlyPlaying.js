@@ -14,9 +14,9 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
     - ~~`theme=white|black`~~
 - ~~Add a "view" parameter to switch between list and coverart _(large & multiple tracks only)_~~
     - ~~`view=list|coverart`~~
+- ~~Add `backup_id` parameter to display when a track isn't found~~
 - Add the ability to display multiple recently played songs
     - `uri=spotify:trackset:Recently+Played:6pIZ0u32c2Lku8PmCWtnMy,1y4Kln6VEjQMpmHW7j9GeY`
-- Add `backup_uri` parameter to display when a track isn't found
 - Turn the "parameters" into "options" and create a table
 - Add a "Browser Support" section
 - Turn into a Bower package
