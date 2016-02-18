@@ -16,9 +16,9 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
     - ~~`view=list|coverart`~~
 - ~~Add `backup_id` parameter to display when a track isn't found~~
 - Add the ability to display multiple recently played songs
+    - Add a "count" parameter?
     - `uri=spotify:trackset:Recently+Played:6pIZ0u32c2Lku8PmCWtnMy,1y4Kln6VEjQMpmHW7j9GeY`
-- Turn the "parameters" into "options" and create a table
-- Add a "Browser Support" section
+- Pass an object to the function instead of multiple parameters
 - Turn into a Bower package
 - Turn into an Npm package
 
