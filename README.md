@@ -10,8 +10,8 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 
 ## To-Do
 
-- Add a "theme" parameter to switch between dark and light _(large & multiple tracks only)_
-    - `theme=white|black`
+- ~~Add a "theme" parameter to switch between dark and light _(large & multiple tracks only)_~~
+    - ~~`theme=white|black`~~
 - Add a "list" parameter to switch between list and coverart _(large & multiple tracks only)_
     - `view=list|coverart`
 - Add the ability to display multiple recently played songs
