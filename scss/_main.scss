@@ -146,9 +146,12 @@ pre,
 
 .section--hero {
     padding: 2rem 0;
-    // text-align: center;
     background: $primary;
     color: $secondary;
+
+    @media all and (min-width: $bp-s) {
+        padding: 4rem 0;
+    }
 
     h1 {
         font-size: 1.5rem;
