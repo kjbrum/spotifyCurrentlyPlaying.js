@@ -12,8 +12,8 @@
  */
 
 ;(function(global) {
-    var SpotifyCurrentlyPlaying = function(selector, username, api_key, width, height, theme) {
-        return new SpotifyCurrentlyPlaying.init(selector, username, api_key, width, height, theme);
+    var SpotifyCurrentlyPlaying = function(selector, username, api_key, width, height, theme, view) {
+        return new SpotifyCurrentlyPlaying.init(selector, username, api_key, width, height, theme, view);
     }
 
     SpotifyCurrentlyPlaying.prototype = {
@@ -44,7 +44,7 @@
                         var iframe = document.createElement('iframe');
                         iframe.width = self.width;
                         iframe.height = self.height;
-                        iframe.src = 'https://embed.spotify.com/?uri='+self.spotifyURI+'&theme='+self.theme;
+                        iframe.src = 'https://embed.spotify.com/?uri='+self.spotifyURI+'&theme='+self.theme+'&view='+self.view;
                         iframe.frameBorder = 0;
                         iframe.setAttribute('allowtransparency', 'true');
                         container.appendChild(iframe);
@@ -166,7 +166,7 @@
     };
 
     // Handle initializing our function
-    SpotifyCurrentlyPlaying.init = function(selector, username, api_key, width, height, theme) {
+    SpotifyCurrentlyPlaying.init = function(selector, username, api_key, width, height, theme, view) {
         var self = this;
 
         self.selector = selector || '';
@@ -175,6 +175,7 @@
         self.width = width || '300';
         self.height = height || '400';
         self.theme = theme || 'black';
+        self.view = view || 'list';
 
         self.lastfmTrack = {
             title: '',
