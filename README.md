@@ -10,11 +10,6 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 
 ## To-Do
 
-- ~~Add a "theme" parameter to switch between dark and light _(large & multiple tracks only)_~~
-    - ~~`theme=white|black`~~
-- ~~Add a "view" parameter to switch between list and coverart _(large & multiple tracks only)_~~
-    - ~~`view=list|coverart`~~
-- ~~Add `backup_id` parameter to display when a track isn't found~~
 - Add the ability to display multiple recently played songs
     - Add a "count" parameter?
     - `uri=spotify:trackset:Recently+Played:6pIZ0u32c2Lku8PmCWtnMy,1y4Kln6VEjQMpmHW7j9GeY`
@@ -25,6 +20,10 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 
 ## Releases
 
+- v0.2.0
+    - Add a "theme" parameter to switch between dark and light _(large & multiple tracks only)_
+    - Add a "view" parameter to switch between list and coverart _(large & multiple tracks only)_
+    - Add `backup_id` parameter to display when a track isn't found
 - v0.1.0
     - Initial release
 
