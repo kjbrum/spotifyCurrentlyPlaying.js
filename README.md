@@ -10,12 +10,12 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 
 ## To-Do
 
-- Add the ability to display multiple recently played songs
+- [ ] Add the ability to display multiple recently played songs
     - Add a "count" parameter?
     - `uri=spotify:trackset:Recently+Played:6pIZ0u32c2Lku8PmCWtnMy,1y4Kln6VEjQMpmHW7j9GeY`
-- Pass an object to the function instead of multiple parameters
-- Turn into a Bower package
-- Turn into an Npm package
+- [ ] Pass an object to the function instead of multiple parameters
+- [ ] Turn into a Bower package
+- [ ] Turn into an Npm package
 
 
 ## Releases
