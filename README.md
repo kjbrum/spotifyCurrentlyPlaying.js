@@ -5,8 +5,8 @@
 
 ## To-Do
 
-- Add a table of all the "options"
-- Add a "Browser Support" section
+- [ ] Add a table of all the "options"
+- [ ] Add a "Browser Support" section
 
 
 ## License
