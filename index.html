@@ -121,9 +121,14 @@
 
                 <h4>Call the SCP( ) function:</h4>
                 <pre><span class="comment">// You will need to pass your parameters to the function
-// You can initialize it with SCP() or SpotifyCurrentlyPlaying()
-// Example: SCP('.selector_or_element', 'lastfm_username', 'lastfm_api_key', 'width', 'height');</span>
-SCP('#spotify-widget', 'kjbrum', 'xxxxxxxxxxxxxxx', '100%', '300');</pre>
+// You can initialize it with SCP() or SpotifyCurrentlyPlaying()</span>
+SCP({
+    selector: '#spotify-widget',
+    username: 'kjbrum',
+    api_key: 'xxxxxxxxxxxxxxx',
+    width: '100%',
+    height: '300'
+});</pre>
             </div>
         </section>
 
@@ -135,7 +140,6 @@ SCP('#spotify-widget', 'kjbrum', 'xxxxxxxxxxxxxxx', '100%', '300');</pre>
                     <small class="subheading">This is similar to what you will get on your website.</small>
                 </div>
 
-                <div id="scp" class="is-hidden"></div>
                 <iframe width="100%" height="370" src="https://embed.spotify.com/?uri=spotify%3atrack%3a7vqUr6K2Js9Paq4kdNSOm6" frameborder="0" allowtransparency="true"></iframe>
             </div>
         </section>
@@ -168,9 +172,6 @@ SCP('#spotify-widget', 'kjbrum', 'xxxxxxxxxxxxxxx', '100%', '300');</pre>
         <script src="js/spotifyCurrentlyPlaying.min.js"></script>
         <script>
             ;(function(global) {
-                // Initialize the Spotify widget
-                SCP('#scp', 'kjbrum', 'da3d6b59d72cbd535ce2405ec13b97be', '100%', '370');
-
                 /**
                  *  Social sharing popup window
                  */
