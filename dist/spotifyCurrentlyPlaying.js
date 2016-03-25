@@ -12,14 +12,14 @@
  */
 
 ;(function(global) {
-    var SpotifyCurrentlyPlaying = function(selector, username, api_key, width, height, theme, view, backup_id) {
-        return new SpotifyCurrentlyPlaying.init(selector, username, api_key, width, height, theme, view, backup_id);
+    var SpotifyCurrentlyPlaying = function(settings) {
+        return new SpotifyCurrentlyPlaying.init(settings);
     }
 
     SpotifyCurrentlyPlaying.prototype = {
-        /*
-         * Display the Spotify player
-         */
+        /******************************
+         * Display the Spotify player *
+         ******************************/
         displayPlayer: function() {
             // Check for missing selector
             if(!this.selector) {
@@ -66,9 +66,9 @@
             });
         },
 
-        /*
-         * Get the most recently scrobbled track from Last.fm
-         */
+        /******************************************************
+         * Get the most recently scrobbled track from Last.fm *
+         ******************************************************/
         queryLastfm: function(callback) {
             var self = this;
 
@@ -118,9 +118,9 @@
             request.send();
         },
 
-        /*
-         * Search for track information on Spotify
-         */
+        /*******************************************
+         * Search for track information on Spotify *
+         *******************************************/
         searchSpotify: function(callback) {
             var self = this;
             var search_query = '';
@@ -173,25 +173,29 @@
         }
     };
 
-    // Handle initializing our function
-    SpotifyCurrentlyPlaying.init = function(selector, username, api_key, width, height, theme, view, backup_id) {
+    /*************************************
+     *  Initializing our function *
+     *************************************/
+    SpotifyCurrentlyPlaying.init = function(settings) {
         var self = this;
 
-        self.selector  = selector || '';
-        self.username  = username || '';
-        self.api_key   = api_key || '';
-        self.width     = width || '300';
-        self.height    = height || '400';
-        self.theme     = theme || 'black';
-        self.view      = view || 'list';
-        self.backup_id = backup_id || '';
+        // Setup settings
+        self.selector    = settings.selector || '';      // Selector for the container
+        self.username    = settings.username || '';      // LastFM username
+        self.api_key     = settings.api_key || '';       // LastFM API key
+        self.width       = settings.width || '300';      // Width of the player
+        self.height      = settings.height || '400';     // Height of the player
+        self.theme       = settings.theme || 'black';    // Theme of the player
+        self.view        = settings.view || 'list';      // View of the player
+        self.backup_id   = settings.backup_id || '';     // Backup ID of track to display if a track isn't found
 
-        self.lastfmTrack = {
+        // Used for storing data
+        self.spotifyURI  = '';                           // Spotify URI
+        self.lastfmTrack = {                             // LastFM track info
             title: '',
             artist: '',
             album: ''
         };
-        self.spotifyURI = '';
 
         // Display the Spotify player
         self.displayPlayer();
