@@ -13,13 +13,14 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 - [ ] Add the ability to display multiple recently played songs
     - Add a "count" parameter?
     - `uri=spotify:trackset:Recently+Played:6pIZ0u32c2Lku8PmCWtnMy,1y4Kln6VEjQMpmHW7j9GeY`
-- [ ] Pass an object to the function instead of multiple parameters
 - [ ] Turn into a Bower package
 - [ ] Turn into an Npm package
 
 
 ## Releases
 
+- v0.3.0
+    - Pass an object to the function instead of multiple parameters for the settings
 - v0.2.0
     - Add a "theme" parameter to switch between dark and light _(large & multiple tracks only)_
     - Add a "view" parameter to switch between list and coverart _(large & multiple tracks only)_
