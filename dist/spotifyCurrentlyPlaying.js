@@ -39,7 +39,7 @@
                     }
 
                     // Display the iframe if we found a track URI
-                    if(self.spotifyURI != '' || self.backup_id != '') {
+                    if(self.spotifyURIs != '' || self.backup_id != '') {
                         var iframe = document.createElement('iframe');
                         iframe.width = self.width;
                         iframe.height = self.height;
@@ -48,8 +48,8 @@
 
                         var track_uri;
                         // Decide if we found a track or are showing the backup
-                        if(self.spotifyURI != '') {
-                            track_uri = self.spotifyURI;
+                        if(self.spotifyURIs != '') {
+                            track_uri = self.spotifyURIs;
                         } else {
                             track_uri = 'spotify:track:'+self.backup_id;
                         }
@@ -73,7 +73,7 @@
             var self = this;
 
             // Set the request URL for Last.fm
-            var lastfm_request_url = 'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user='+this.username+'&api_key='+this.api_key+'&limit=1&format=json';
+            var lastfm_request_url = 'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user='+this.username+'&api_key='+this.api_key+'&limit='+self.count+'&format=json';
 
             // Make a request to the Last.fm API
             var request = new XMLHttpRequest();
@@ -85,20 +85,29 @@
                 var data = JSON.parse(request.responseText);
 
                 if(request.status >= 200 && request.status < 400) {
-                    var the_track;
 
-                    // Update our values
-                    if(data.recenttracks.track[0]) {
-                        the_track = data.recenttracks.track[0];
-                    } else {
-                        the_track = data.recenttracks.track;
+                    console.log(data.recenttracks);
+
+                    if(data.recenttracks.track.length > 1) {
+                        // Update our values
+                        if(data.recenttracks.track[0]) {
+
+                            // Loop through the tracks
+                            data.recenttracks.track.forEach(function(el, idx) {
+                                self.lastfmTracks.push({
+                                    title: data.recenttracks.track[idx].name,
+                                    artist: data.recenttracks.track[idx].artist['#text'],
+                                    album: data.recenttracks.track[idx].album['#text']
+                                });
+                            });
+                        } else {
+                            self.lastfmTracks.push({
+                                title: data.recenttracks.track.name,
+                                artist: data.recenttracks.track.artist['#text'],
+                                album: data.recenttracks.track.album['#text']
+                            });
+                        }
                     }
-
-                    self.lastfmTrack = {
-                        title: the_track.name,
-                        artist: the_track.artist['#text'],
-                        album: the_track.album['#text']
-                    };
 
                     // Run the callback function
                     callback();
@@ -124,7 +133,7 @@
         searchSpotify: function(callback) {
             var self = this;
             var search_query = '';
-            var track = self.lastfmTrack;
+            var track = self.lastfmTracks;
 
             for(var key in track) {
                 // Skip if the property is from prototype
@@ -151,7 +160,7 @@
                 if(request.status >= 200 && request.status < 400) {
                     // Update our values
                     if(data.tracks.items[0]) {
-                        self.spotifyURI = data.tracks.items[0].uri;
+                        self.spotifyURIs = data.tracks.items[0].uri;
                     }
 
                     // Run the callback function
@@ -180,22 +189,19 @@
         var self = this;
 
         // Setup settings
-        self.selector    = settings.selector || '';      // Selector for the container
-        self.username    = settings.username || '';      // LastFM username
-        self.api_key     = settings.api_key || '';       // LastFM API key
-        self.width       = settings.width || '300';      // Width of the player
-        self.height      = settings.height || '400';     // Height of the player
-        self.theme       = settings.theme || 'black';    // Theme of the player
-        self.view        = settings.view || 'list';      // View of the player
-        self.backup_id   = settings.backup_id || '';     // Backup ID of track to display if a track isn't found
+        self.selector    = settings.selector || '';          // Selector for the container
+        self.username    = settings.username || '';          // LastFM username
+        self.api_key     = settings.api_key || '';           // LastFM API key
+        self.width       = settings.width || '300';          // Width of the player
+        self.height      = settings.height || '400';         // Height of the player
+        self.theme       = settings.theme || 'black';        // Theme of the player
+        self.view        = settings.view || 'list';          // View of the player
+        self.count       = parseInt(settings.count) || 1;    // Number of tracks to return
+        self.backup_id   = settings.backup_id || '';         // Backup ID of track to display if a track isn't found
 
         // Used for storing data
-        self.spotifyURI  = '';                           // Spotify URI
-        self.lastfmTrack = {                             // LastFM track info
-            title: '',
-            artist: '',
-            album: ''
-        };
+        self.spotifyURIs;                                    // Spotify URIs
+        self.lastfmTracks = [];                              // Array of LastFM track info
 
         // Display the Spotify player
         self.displayPlayer();
