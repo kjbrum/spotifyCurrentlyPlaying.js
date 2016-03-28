@@ -126,11 +126,11 @@
                         if (tracks[0]) {
                             // Loop through the tracks
                             tracks.forEach(function(el, idx, arr) {
-                                self.lastfm_tracks.push({
+                                self.lastfm_tracks[idx] = {
                                     title: arr[idx].name,
                                     artist: arr[idx].artist['#text'],
                                     album: arr[idx].album['#text']
-                                });
+                                };
                             });
                         } else {
                             self.lastfm_tracks.push({
@@ -200,12 +200,17 @@
                             // Update our values
                             if (data.tracks.items[0]) {
                                 // If we found a track, push it into our array
-                                self.spotify_URIs.push(data.tracks.items[0].uri);
+                                self.spotify_URIs[idx] = data.tracks.items[0].uri;
                             }
 
                             // tracksProcessed++;
                             // Check if we are on the last track
                             if (++tracksProcessed === arr.length) {
+                                // Remove empty array value
+                                self.spotify_URIs = self.spotify_URIs.filter(function(n) {
+                                    return n;
+                                });
+
                                 // Run the callback function
                                 callback();
                             }
@@ -238,19 +243,19 @@
         var self = this;
 
         // Setup settings
-        self.selector      = settings.selector || '.scp-container';    // Selector for the container
-        self.username      = settings.username || '';                  // LastFM username
-        self.api_key       = settings.api_key || '';                   // LastFM API key
-        self.width         = settings.width || 300;                    // Width of the player
-        self.height        = settings.height || 400;                   // Height of the player
-        self.theme         = settings.theme || 'black';                // Theme of the player
-        self.view          = settings.view || 'list';                  // View of the player
-        self.count         = parseInt(settings.count) || 1;            // Number of tracks to display
-        self.backup_ids    = settings.backup_ids || [];                // Backup IDs of tracks to display if no tracks are found
+        self.selector = settings.selector || '.scp-container'; // Selector for the container
+        self.username = settings.username || ''; // LastFM username
+        self.api_key = settings.api_key || ''; // LastFM API key
+        self.width = settings.width || 300; // Width of the player
+        self.height = settings.height || 400; // Height of the player
+        self.theme = settings.theme || 'black'; // Theme of the player
+        self.view = settings.view || 'list'; // View of the player
+        self.count = parseInt(settings.count) || 1; // Number of tracks to display
+        self.backup_ids = settings.backup_ids || []; // Backup IDs of tracks to display if no tracks are found
 
         // Used for storing data
-        self.spotify_URIs  = [];                                       // Spotify URIs
-        self.lastfm_tracks = [];                                       // Array of LastFM track info
+        self.spotify_URIs = []; // Spotify URIs
+        self.lastfm_tracks = []; // Array of LastFM track info
 
         // Display the Spotify player
         self.displayPlayer();
