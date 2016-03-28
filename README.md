@@ -17,6 +17,15 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 - [ ] Turn into an Npm package
 
 
+## Browser Support
+
+- Chrome _(todo)_
+- Firefox _(todo)_
+- Safari _(todo)_
+- Opera _(todo)_
+- IE _(todo)_
+
+
 ## Changelog
 
 - v0.3.1
