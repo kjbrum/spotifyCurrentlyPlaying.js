@@ -29,13 +29,10 @@
             }
 
             // Get the most recent track
-            this.queryLastfm(function() {
+            self.queryLastfm(function() {
 
                 // Search Spotify for the track
                 self.searchSpotify(function() {
-
-                    console.log(self.spotifyURIs);
-
                     var container = self.selector;
 
                     // Check the type of selector that was supplied
@@ -167,6 +164,7 @@
         searchSpotify: function(callback) {
             var self = this;
             var tracks = self.lastfmTracks;
+            var tracksProcessed = 0;
 
             // Loop through the tracks
             tracks.forEach(function(el, idx, arr) {
@@ -203,8 +201,9 @@
                             self.spotifyURIs.push(data.tracks.items[0].uri);
                         }
 
+                        // tracksProcessed++;
                         // Check if we are on the last track
-                        if((idx + 1) === arr.length) {
+                        if(++tracksProcessed === arr.length) {
                             // Run the callback function
                             callback();
                         }
