@@ -1,4 +1,5 @@
-# spotifyCurrentlyPlaying.js
+# ![spotifyCurrentlyPlaying.js](https://raw.githubusercontent.com/kjbrum/spotifyCurrentlyPlaying.js/master/media/spotify-currently-playing.png)
+
 
 > Display your currently playing Spotify song(s) using Last.fm scrobbling.
 
