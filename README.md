@@ -23,7 +23,7 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 
 |Option|Type|Default|Description|
 |---|---|---|---|
-selector|string or element|'.scp-container'|Class or selector for the container
+selector|string\|element|'.scp-container'|Class or selector for the container
 username|string|''|LastFM username
 api_key|string|''|LastFM API key
 width|int|300|Width of the player
