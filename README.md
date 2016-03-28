@@ -11,6 +11,7 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 
 ## To-Do
 
+- [ ] Fix issue with tracks being in the wrong order
 - [ ] Add API methods
     - [ ] `refresh()` - Refresh the player
     - [ ] `destroy()` - Remove the player

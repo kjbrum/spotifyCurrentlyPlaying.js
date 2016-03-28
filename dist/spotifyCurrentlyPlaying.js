@@ -241,11 +241,11 @@
         self.selector      = settings.selector || '.scp-container';    // Selector for the container
         self.username      = settings.username || '';                  // LastFM username
         self.api_key       = settings.api_key || '';                   // LastFM API key
-        self.width         = settings.width || '300';                  // Width of the player
-        self.height        = settings.height || '400';                 // Height of the player
+        self.width         = settings.width || 300;                    // Width of the player
+        self.height        = settings.height || 400;                   // Height of the player
         self.theme         = settings.theme || 'black';                // Theme of the player
         self.view          = settings.view || 'list';                  // View of the player
-        self.count         = parseInt(settings.count) || 1;            // Number of tracks to return
+        self.count         = parseInt(settings.count) || 1;            // Number of tracks to display
         self.backup_ids    = settings.backup_ids || [];                // Backup IDs of tracks to display if no tracks are found
 
         // Used for storing data
