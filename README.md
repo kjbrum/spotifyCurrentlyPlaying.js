@@ -12,9 +12,12 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 ## To-Do
 
 - [ ] Fix issue with tracks being in the wrong order
-- [ ] Add API methods
+- [ ] Add Methods
     - [ ] `refresh()` - Refresh the player
     - [ ] `destroy()` - Remove the player
+- [ ] Add Events
+    - [ ] - `init` - Fires after SCP initializes for the first time
+    - [ ] - `reInit` - Fires every time SCP re-initializes
 - [ ] Turn into a Bower package
 - [ ] Turn into an Npm package
 
