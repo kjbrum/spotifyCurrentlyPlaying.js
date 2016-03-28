@@ -1,6 +1,6 @@
 # spotifyCurrentlyPlaying.js
 
-> Display your currently playing Spotify song using Last.fm scrobbling.
+> Display your currently playing Spotify song(s) using Last.fm scrobbling.
 
 
 ## Documentation
@@ -10,7 +10,7 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 
 ## To-Do
 
-- [ ] Add the ability to display multiple recently played songs
+- [x] Add the ability to display multiple recently played songs
     - Add a "count" parameter?
     - `uri=spotify:trackset:Recently+Played:6pIZ0u32c2Lku8PmCWtnMy,1y4Kln6VEjQMpmHW7j9GeY`
 - [ ] Turn into a Bower package
