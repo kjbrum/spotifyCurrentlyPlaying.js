@@ -10,6 +10,9 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 
 ## To-Do
 
+- [ ] Add API methods
+    - [ ] Refresh - Refresh the player
+    - [ ] Destroy - Remove the player
 - [ ] Turn into a Bower package
 - [ ] Turn into an Npm package
 
