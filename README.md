@@ -14,7 +14,7 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 - [ ] Turn into an Npm package
 
 
-## Releases
+## Changelog
 
 - v0.3.1
     - Add a "count" parameter to allow displaying multiple recently played songs
