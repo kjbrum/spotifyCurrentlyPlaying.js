@@ -44,19 +44,50 @@
                     }
 
                     // Display the iframe if we found a track URI
-                    if(self.spotifyURIs != '' || self.backup_ids != '') {
+                    if(self.spotifyURIs.length > 0 || self.backup_ids.length > 0) {
+                        var track_uri = '';
                         var iframe = document.createElement('iframe');
+
+                        // Build the iframe
                         iframe.width = self.width;
                         iframe.height = self.height;
                         iframe.frameBorder = 0;
                         iframe.setAttribute('allowtransparency', 'true');
 
-                        var track_uri;
-                        // Decide if we found a track or are showing the backup
-                        if(self.spotifyURIs != '') {
-                            track_uri = self.spotifyURIs;
+                        // Check if we found anything or need to show backup tracks
+                        if(self.spotifyURIs.length > 0) {
+                            // Check if we found multiple tracks
+                            if(self.spotifyURIs.length > 1) {
+                                track_uri += 'spotify:trackset:Recently+Played:'
+
+                                // Loop through the Spotify URIs
+                                self.spotifyURIs.forEach(function(el, idx, arr) {
+                                    var track_pieces = arr[idx].split(':');
+                                    track_uri += track_pieces[2];
+
+                                    if((idx + 1) !== arr.length) {
+                                        track_uri += ',';
+                                    }
+                                });
+                            } else {
+                                track_uri = self.spotifyURIs[0];
+                            }
                         } else {
-                            track_uri = 'spotify:track:'+self.backup_ids;
+                            // Check if we have multiple backup IDs
+                            if(self.backup_ids.length > 1) {
+                                track_uri += 'spotify:trackset:Recently+Played:'
+
+                                // Loop through the backup IDs
+                                self.backup_ids.forEach(function(el, idx, arr) {
+                                    track_uri += arr[idx];
+
+                                    if((idx + 1) !== arr.length) {
+                                        track_uri += ',';
+                                    }
+                                });
+                            } else {
+                                track_uri = self.backup_ids[0];
+                            }
                         }
 
                         iframe.src = 'https://embed.spotify.com/?uri='+track_uri+'&theme='+self.theme+'&view='+self.view;
@@ -88,25 +119,26 @@
             request.onload = function() {
                 // Parse the response
                 var data = JSON.parse(request.responseText);
+                var tracks = data.recenttracks.track;
 
                 // Check the status of the request
                 if(request.status >= 200 && request.status < 400) {
-                    if(data.recenttracks.track.length > 1) {
+                    if(tracks.length > 0) {
                         // Update our values
-                        if(data.recenttracks.track[0]) {
+                        if(tracks[0]) {
                             // Loop through the tracks
-                            data.recenttracks.track.forEach(function(el, idx) {
+                            tracks.forEach(function(el, idx, arr) {
                                 self.lastfmTracks.push({
-                                    title: data.recenttracks.track[idx].name,
-                                    artist: data.recenttracks.track[idx].artist['#text'],
-                                    album: data.recenttracks.track[idx].album['#text']
+                                    title: arr[idx].name,
+                                    artist: arr[idx].artist['#text'],
+                                    album: arr[idx].album['#text']
                                 });
                             });
                         } else {
                             self.lastfmTracks.push({
-                                title: data.recenttracks.track.name,
-                                artist: data.recenttracks.track.artist['#text'],
-                                album: data.recenttracks.track.album['#text']
+                                title: tracks.name,
+                                artist: tracks.artist['#text'],
+                                album: tracks.album['#text']
                             });
                         }
                     }
@@ -136,9 +168,11 @@
             var self = this;
             var tracks = self.lastfmTracks;
 
+            // Loop through the tracks
             tracks.forEach(function(el, idx, arr) {
                 var search_query = '';
 
+                // Loop through the track properties
                 for(var key in el) {
                     // Skip if the property is from prototype
                     if(!el.hasOwnProperty(key)) continue;
