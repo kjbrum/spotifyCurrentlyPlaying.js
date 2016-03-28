@@ -165,7 +165,7 @@
         searchSpotify: function(callback) {
             var self = this;
             var tracks = self.lastfm_tracks;
-            var tracksProcessed = 0;
+            var tracksProcessed = 1;
 
             if (tracks.length > 0) {
                 // Loop through the tracks
