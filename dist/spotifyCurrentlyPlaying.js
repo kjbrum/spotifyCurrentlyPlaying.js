@@ -36,12 +36,12 @@
                     var container = self.selector;
 
                     // Check the type of selector that was supplied
-                    if(typeof(self.selector) === 'string') {
+                    if(typeof self.selector === 'string') {
                         container = document.querySelector(self.selector);
                     }
 
                     // Display the iframe if we found a track URI
-                    if(self.spotifyURIs.length > 0 || self.backup_ids.length > 0) {
+                    if(self.spotify_URIs.length > 0 || self.backup_ids.length > 0) {
                         var track_uri = '';
                         var iframe = document.createElement('iframe');
 
@@ -52,13 +52,13 @@
                         iframe.setAttribute('allowtransparency', 'true');
 
                         // Check if we found anything or need to show backup tracks
-                        if(self.spotifyURIs.length > 0) {
+                        if(self.spotify_URIs.length > 0) {
                             // Check if we found multiple tracks
-                            if(self.spotifyURIs.length > 1) {
+                            if(self.spotify_URIs.length > 1) {
                                 track_uri += 'spotify:trackset:Recently+Played:'
 
                                 // Loop through the Spotify URIs
-                                self.spotifyURIs.forEach(function(el, idx, arr) {
+                                self.spotify_URIs.forEach(function(el, idx, arr) {
                                     var track_pieces = arr[idx].split(':');
                                     track_uri += track_pieces[2];
 
@@ -67,7 +67,7 @@
                                     }
                                 });
                             } else {
-                                track_uri = self.spotifyURIs[0];
+                                track_uri = self.spotify_URIs[0];
                             }
                         } else {
                             // Check if we have multiple backup IDs
@@ -125,14 +125,14 @@
                         if(tracks[0]) {
                             // Loop through the tracks
                             tracks.forEach(function(el, idx, arr) {
-                                self.lastfmTracks.push({
+                                self.lastfm_tracks.push({
                                     title: arr[idx].name,
                                     artist: arr[idx].artist['#text'],
                                     album: arr[idx].album['#text']
                                 });
                             });
                         } else {
-                            self.lastfmTracks.push({
+                            self.lastfm_tracks.push({
                                 title: tracks.name,
                                 artist: tracks.artist['#text'],
                                 album: tracks.album['#text']
@@ -163,66 +163,70 @@
          *******************************************/
         searchSpotify: function(callback) {
             var self = this;
-            var tracks = self.lastfmTracks;
+            var tracks = self.lastfm_tracks;
             var tracksProcessed = 0;
 
-            // Loop through the tracks
-            tracks.forEach(function(el, idx, arr) {
-                var search_query = '';
+            if(tracks.length > 0) {
+                // Loop through the tracks
+                tracks.forEach(function(el, idx, arr) {
+                    var search_query = '';
 
-                // Loop through the track properties
-                for(var key in el) {
-                    // Skip if the property is from prototype
-                    if(!el.hasOwnProperty(key)) continue;
+                    // Loop through the track properties
+                    for(var key in el) {
+                        // Skip if the property is from prototype
+                        if(!el.hasOwnProperty(key)) continue;
 
-                    // Build the search query string
-                    if(el[key]) {
-                        search_query += key+':'+el[key]+' ';
-                    }
-                }
-
-                // Set the request URL for Spotify
-                var spotify_request_url = 'https://api.spotify.com/v1/search?query='+encodeURIComponent(search_query)+'&offset=0&limit=1&type=track';
-
-                // Make a request to the Spotify API
-                var request = new XMLHttpRequest();
-                request.open('GET', spotify_request_url, true);
-
-                // Check for a successful response
-                request.onload = function() {
-                    // Parse the response
-                    var data = JSON.parse(request.responseText);
-
-                    // Check the status of the request
-                    if(request.status >= 200 && request.status < 400) {
-                        // Update our values
-                        if(data.tracks.items[0]) {
-                            // If we found a track, push it into our array
-                            self.spotifyURIs.push(data.tracks.items[0].uri);
+                        // Build the search query string
+                        if(el[key]) {
+                            search_query += key+':'+el[key]+' ';
                         }
-
-                        // tracksProcessed++;
-                        // Check if we are on the last track
-                        if(++tracksProcessed === arr.length) {
-                            // Run the callback function
-                            callback();
-                        }
-                    } else {
-                        // Error from the server
-                        throw data.message;
                     }
-                };
 
-                // Handle any errors
-                request.onerror = function() {
-                    // Connection error
-                    throw 'connection error';
-                };
+                    // Set the request URL for Spotify
+                    var spotify_request_url = 'https://api.spotify.com/v1/search?query='+encodeURIComponent(search_query)+'&offset=0&limit=1&type=track';
 
-                // Send the request
-                request.send();
-            });
+                    // Make a request to the Spotify API
+                    var request = new XMLHttpRequest();
+                    request.open('GET', spotify_request_url, true);
 
+                    // Check for a successful response
+                    request.onload = function() {
+                        // Parse the response
+                        var data = JSON.parse(request.responseText);
+
+                        // Check the status of the request
+                        if(request.status >= 200 && request.status < 400) {
+                            // Update our values
+                            if(data.tracks.items[0]) {
+                                // If we found a track, push it into our array
+                                self.spotify_URIs.push(data.tracks.items[0].uri);
+                            }
+
+                            // tracksProcessed++;
+                            // Check if we are on the last track
+                            if(++tracksProcessed === arr.length) {
+                                // Run the callback function
+                                callback();
+                            }
+                        } else {
+                            // Error from the server
+                            throw data.message;
+                        }
+                    };
+
+                    // Handle any errors
+                    request.onerror = function() {
+                        // Connection error
+                        throw 'connection error';
+                    };
+
+                    // Send the request
+                    request.send();
+                });
+            } else {
+                // Run the callback function if no tracks were found
+                callback();
+            }
         }
     };
 
@@ -244,8 +248,8 @@
         self.backup_ids   = settings.backup_ids || [];       // Backup IDs of tracks to display if no tracks are found
 
         // Used for storing data
-        self.spotifyURIs = [];                               // Spotify URIs
-        self.lastfmTracks = [];                              // Array of LastFM track info
+        self.spotify_URIs = [];                               // Spotify URIs
+        self.lastfm_tracks = [];                              // Array of LastFM track info
 
         // Display the Spotify player
         self.displayPlayer();
