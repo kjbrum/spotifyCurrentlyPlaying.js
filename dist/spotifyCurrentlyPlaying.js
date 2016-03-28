@@ -1,10 +1,10 @@
 /**
  *
  *  -----------------------------------
- *  spotifyCurrentlyPlaying.js - v0.3.0
+ *  spotifyCurrentlyPlaying.js - v0.3.1
  *  -----------------------------------
  *
- *  Display your currently playing Spotify song using Last.fm scrobbling.
+ *  Display your currently playing Spotify song(s) using Last.fm scrobbling.
  *
  *  https://github.com/kjbrum/spotifyCurrentlyPlaying.js
  *  @license Copyright (c) Kyle Brumm <http://kylebrumm.com>
