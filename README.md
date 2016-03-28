@@ -18,6 +18,21 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 - [ ] Turn into an Npm package
 
 
+## Settings
+
+|Option|Type|Default|Description|
+|---|---|---|---|
+selector|string or element|'.scp-container'|Class or selector for the container
+username|string|''|LastFM username
+api_key|string|''|LastFM API key
+width|int|300|Width of the player
+height|int|400|Height of the player
+theme|string|'black'|Theme of the player (black, white)
+view|string|'list'|View of the player (list, coverart)
+count|int|1|Number of tracks to display
+backup_ids|array|[...]|Backup IDs of tracks to display if no tracks are found
+
+
 ## Browser Support
 
 - Chrome _(todo)_
