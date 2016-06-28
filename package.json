@@ -1,6 +1,6 @@
 {
   "name": "spotifyCurrentlyPlaying.js",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Display your currently playing Spotify song(s) using Last.fm scrobbling.",
   "scripts": {
     "browsersync": "browser-sync start --server --files 'css/style.css, js, **/*.html'",
