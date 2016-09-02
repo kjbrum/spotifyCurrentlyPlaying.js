@@ -16,8 +16,6 @@ http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 - [ ] Add Events
     - [ ] - `init` - Fires after SCP initializes for the first time
     - [ ] - `reInit` - Fires every time SCP re-initializes
-- [ ] Turn into a Bower package
-- [ ] Turn into an npm package
 - Website
     - [ ] Add a table of all the "options"
     - [ ] Add a "Browser Support" section
