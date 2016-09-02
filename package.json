@@ -1,33 +1,47 @@
 {
   "name": "spotifyCurrentlyPlaying.js",
-  "version": "0.3.1",
+  "version": "0.3.2",
+  "homepage": "http://kylebrumm.com/spotifyCurrentlyPlaying.js",
+  "author": "Kyle Brumm",
   "description": "Display your currently playing Spotify song(s) using Last.fm scrobbling.",
+  "main": "dist/spotifyCurrentlyPlaying.js",
   "scripts": {
     "browsersync": "browser-sync start --server --files 'css/style.css, js, **/*.html'",
-    "build": "npm run css:build",
+    "build": "npm run js:build && npm run css:build",
     "css": "npm run css:watch",
-    "css:autoprefix": "postcss --use autoprefixer --output style.css style.css",
+    "css:autoprefix": "postcss --use autoprefixer --output css/style.css css/style.css",
     "css:build": "npm run css:compile && npm run css:autoprefix",
     "css:compile": "node-sass --output-style compressed scss/style.scss css/style.css",
     "css:watch": "watch 'npm run css:build' scss",
     "dev": "parallelshell 'npm run watch' 'npm run browsersync'",
+    "js:build": "uglifyjs dist/spotifyCurrentlyPlaying.js -c -m --mangle-props=1 --comments='@license' -o dist/spotifyCurrentlyPlaying.min.js",
     "watch": "npm run css"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/kjbrum/spotifyCurrentlyPlaying.js.git"
   },
-  "author": "Kyle Brumm",
+  "keywords": [
+    "spotify",
+    "widget",
+    "last.fm",
+    "scrobbling",
+    "current",
+    "playing",
+    "recent",
+    "music",
+    "kjbrum"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kjbrum/spotifyCurrentlyPlaying.js/issues"
   },
-  "homepage": "https://github.com/kjbrum/spotifyCurrentlyPlaying.js#readme",
   "devDependencies": {
     "autoprefixer": "latest",
     "node-sass": "latest",
     "parallelshell": "latest",
     "postcss-cli": "latest",
+    "uglify-js": "latest",
     "watch": "latest"
   }
 }

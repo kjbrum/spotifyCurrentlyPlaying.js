@@ -1,0 +1,38 @@
+{
+  "name": "spotifyCurrentlyPlaying.js",
+  "version": "0.3.2",
+  "homepage": "http://kylebrumm.com/spotifyCurrentlyPlaying.js",
+  "author": "Kyle Brumm",
+  "description": "Display your currently playing Spotify song(s) using Last.fm scrobbling.",
+  "main": "dist/spotifyCurrentlyPlaying.js",
+  "keywords": [
+    "spotify",
+    "widget",
+    "last.fm",
+    "scrobbling",
+    "current",
+    "playing",
+    "recent",
+    "music",
+    "kjbrum"
+  ],
+  "ignore": [
+    ".DS_Store",
+    "node_modules",
+    ".sass-cache",
+    "*.log",
+    "css",
+    "img",
+    "scss",
+    "index.html"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "node-sass": "latest",
+    "parallelshell": "latest",
+    "postcss-cli": "latest",
+    "uglify-js": "latest",
+    "watch": "latest"
+  }
+}
