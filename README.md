@@ -8,6 +8,21 @@
 http://kylebrumm.com/spotifyCurrentlyPlaying.js/
 
 
+## Install
+
+__Bower:__
+
+`$ bower install spotifyCurrentlyPlaying.js`
+
+__npm:__
+
+`$ npm install spotifyCurrentlyPlaying.js`
+
+__CDN:__
+
+`<script src="https://npmcdn.com/spotifyCurrentlyPlaying.js/dist/spotifyCurrentlyPlaying.min.js"></script>`
+
+
 ## To-Do
 
 - [ ] Add Methods
