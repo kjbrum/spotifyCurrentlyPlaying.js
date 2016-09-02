@@ -25,7 +25,7 @@ $ npm install spotifyCurrentlyPlaying.js
 __CDN:__
 
 ```
-<script src="https://npmcdn.com/spotifyCurrentlyPlaying.js/dist/spotifyCurrentlyPlaying.min.js"></script>
+<script src="https://unpkg.com/spotifyCurrentlyPlaying.js/dist/spotifyCurrentlyPlaying.min.js"></script>
 ```
 
 
